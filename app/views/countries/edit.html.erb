@@ -1,0 +1,24 @@
+<div class='chat-room-form'>
+  <h1>どちらの国に行かれますか</h1>
+  <%=form_with model: @country, local: true do |f|%>
+    
+    <div class='chat-room-form__field'>
+    </div>
+    <div class='chat-room-form__field'>
+      <div class='chat-room-form__field--left'>
+        <label class='chat-room-form__label' for='chat_room_チャットメンバー'>国を選択する</label>
+      </div>
+      <div class='chat-room-form__field--right'>
+      <%= render 'shared/error_messages', model: f.object %>
+      <%= f.collection_select(:name, Kuni.all, :name, :name, {prompt:"選択してください"}, {class:"select-box", id:"item-category"}) %>
+      
+      </div>
+    </div>
+    <div class='chat-room-form__field'>
+      <div class='chat-room-form__field--left'></div>
+      <div class='chat-room-form__field--right'>
+        <%= f.submit class: 'chat-room-form__action-btn'%>
+      </div>
+    </div>
+  <% end %>
+</div>
