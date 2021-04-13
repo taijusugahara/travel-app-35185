@@ -1,4 +1,6 @@
 class CountriesController < ApplicationController
+before_action :authenticate_user!, except: [:index, :show]
+before_action :move_to_root, only: [:edit, :update, :destroy]
   def index
   end
 
@@ -39,8 +41,12 @@ class CountriesController < ApplicationController
 
 
   private
-  def country_params
-  
-  params.require(:country).permit(:name).merge(user_id: current_user.id)
-  end
+    def country_params
+    params.require(:country).permit(:name).merge(user_id: current_user.id)
+    end
+
+    def move_to_root
+      @country = Country.find(params[:id])
+      redirect_to root_path if current_user.id != @country.user.id 
+    end
 end
