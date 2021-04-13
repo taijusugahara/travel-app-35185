@@ -15,63 +15,24 @@
 
 ### Association
 
-- has_many :country_users
-- has_many :countries, through: country_users
-- has_many :plane_users
-- has_many :planes, through: plane_users
-- has_many :hotel_users
-- has_many :hotels, through: hotel_users
+- has_many :countries
+- has_many :planes
+- has_many :hotels
 - has_many :orders
 
-## country_users テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| country| references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :country
-
-## plane_users テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| plane  | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :plane
-
-## country_users テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| user   | references | null: false, foreign_key: true |
-| hotel  | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :hotel
 
 ## country テーブル
 
 | Column                | Type   | Options                       |
 | ----------------------| ------ | ----------------------------- |
 | name                  | string | null: false                   |
-
+| user               | references | null: false, foreign_key: true |
 ### Association
 
-- has_many :country_users
-- has_many :users, through: country_users
-- has_many :planes
-- has_many :hotels
-- has_many :orders
+- belongs_to :user
+- has_one :plane
+<!-- - has_many :hotels -->
+- has_one :order
 
 ## plane テーブル
 
@@ -81,28 +42,15 @@
 | price                 | integer| null: false                   |
 | go_date               | date   | null: false                   |
 | back_date             | date   | null: false                   |
+| user                  | references | null: false, foreign_key: true |
 | country               | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_many :plane_users
-- has_many :users, through: plane_users
+- belongs_to :user
 - belongs_to :country
-- has_many :plane_hotels
-- has_many :hotels, through: plane_hotels
-- has_many :orders
-
-## plane_hotels テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| plane  | references | null: false, foreign_key: true |
-| hotel  | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :plane
-- belongs_to :hotel
+- has_one :hotel
+- has_one :order
 
 ##  hotel テーブル
 
@@ -112,16 +60,13 @@
 | price                 | integer| null: false                   |
 | day                   | integer| null: false                   |
 | total_price           | integer| null: false                   |
-| country               | references | null: false, foreign_key: true |
+| plane                 | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_many :hotel_users
-- has_many :users, through: hotel_users
-- belongs_to :country
-- has_many :plane_hotels
-- has_many :planes, through: plane_hotels
-- has_many :orders
+- belongs_to :user
+- belongs_to :plane
+- has_one :order
 
 ## order テーブル
 
