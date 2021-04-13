@@ -9,16 +9,17 @@ class CountriesController < ApplicationController
   def create
     
     @country = Country.new(country_params)
-    
     if @country.save
-     redirect_to root_path
+     redirect_to country_planes_path(@country.id)
   
       
     else
       render :new
     end
   end
-
+  def show
+    @country = Country.find(params[:id])
+  end
 
 
   private

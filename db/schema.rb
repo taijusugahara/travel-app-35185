@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_12_231113) do
+ActiveRecord::Schema.define(version: 2021_04_13_030750) do
 
   create_table "countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -18,6 +18,19 @@ ActiveRecord::Schema.define(version: 2021_04_12_231113) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_countries_on_user_id"
+  end
+
+  create_table "planes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.date "go_date", null: false
+    t.date "back_date", null: false
+    t.bigint "user_id", null: false
+    t.bigint "country_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_planes_on_country_id"
+    t.index ["user_id"], name: "index_planes_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -39,4 +52,6 @@ ActiveRecord::Schema.define(version: 2021_04_12_231113) do
   end
 
   add_foreign_key "countries", "users"
+  add_foreign_key "planes", "countries"
+  add_foreign_key "planes", "users"
 end
