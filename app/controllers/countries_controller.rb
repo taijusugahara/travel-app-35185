@@ -21,6 +21,22 @@ class CountriesController < ApplicationController
     @country = Country.find(params[:id])
   end
 
+  def edit
+    @country = Country.find(params[:id])
+  end
+
+  def update
+    @country = Country.find(params[:id])
+      @country.update(country_params)
+      redirect_to country_planes_path(@country.id)
+  end
+
+  def destroy
+    @country = Country.find(params[:id])
+    @country.destroy
+    redirect_to root_path
+  end
+
 
   private
   def country_params
