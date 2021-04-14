@@ -14,10 +14,11 @@ class PlanesController < ApplicationController
   end
 
   def create
+    @country = Country.find(params[:country_id])
     @plane = Plane.new(plane_params)
     
     if @plane.save
-      redirect_to root_path
+      redirect_to country_path(@country.id)
     else
       @country = Country.find(params[:country_id])
       @thai = ThaiPlane.all
