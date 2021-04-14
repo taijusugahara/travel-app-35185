@@ -21,8 +21,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_030750) do
   end
 
   create_table "planes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "price", null: false
+    t.integer "country_plane_id", null: false
     t.date "go_date", null: false
     t.date "back_date", null: false
     t.bigint "user_id", null: false
