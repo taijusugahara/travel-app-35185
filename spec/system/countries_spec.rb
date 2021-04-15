@@ -40,6 +40,7 @@ RSpec.describe "国関連", type: :system do
 
 
 end
+
 RSpec.describe "国関連", type: :system do
   
   before do
@@ -48,39 +49,42 @@ RSpec.describe "国関連", type: :system do
     @country2 = FactoryBot.create(:country)
   end
 
-  context '国情報を変更'do
-    it 'ログインしているユーザーは自身の国情報を変更できる' do
+  context '国情報の詳細ページ'do
+    it 'ログインしているユーザーは自身の国情報の詳細ページにいくことができる' do
       # ログインする
       sign_in(@country1.user)
-      # 編集ページを訪れる
-      visit edit_country_path(@country1)
-      # 情報を入力する
-      select 'カンボジア', from: 'country[name]'
-      # 送信する
-      find('input[name="commit"]').click
-      # planesのindexページに移動する
-      expect(current_path).to eq (country_planes_path(@country1))
+      # 国詳細ページを訪れる
+      visit country_path(@country1)
+      # 選択した国名がある
+      expect(page).to have_content("#{@country1.name}へようこそ！")
+      # トップページに戻るリンクがある
+      expect(page).to have_content('トップページに戻る')
       
+
     end
-    it 'ログインしたユーザーは他のユーザーの国情報を変更できない' do
-       # ログインする
-       sign_in(@country2.user)
-       # 他の編集ページを訪れようとする
-       visit edit_country_path(@country1)
-       #ログインページに移動させられる
-       expect(current_path).to eq (root_path)
+    it 'ログインしているユーザーは他の人の国情報詳細ページに移動できない' do
+      # ログインする
+      sign_in(@country2.user)
+      # 国の詳細ページを訪れる
+      visit country_path(@country1)
+      # トップページに移動させられる
+      expect(current_path).to eq (root_path)
+    
     end
 
-    it 'ログインしていないユーザーは国情報を変更できない' do
+    it 'ログインしていないユーザーは国情報詳細ページに移動できない' do
       # トップページにいく
       visit root_path
-      # 国変更ページにいこうとする
-      visit edit_country_path(@country1)
+      # 国の詳細ページを訪れる
+      visit country_planes_path(@country1)
       # ログインページへと移動させられる
       expect(current_path).to eq (new_user_session_path)
     end
   end
 end
+
+
+
 RSpec.describe "国関連", type: :system do
   
   before do
@@ -93,8 +97,8 @@ RSpec.describe "国関連", type: :system do
     it 'ログインしているユーザーは自身の国情報を削除できる' do
       # ログインする
       sign_in(@country1.user)
-      # 飛行機の一覧ページを訪れる
-      visit country_planes_path(@country1)
+      # 国の詳細ページを訪れる
+      visit country_path(@country1)
       # トップページに戻るリンクがある
       expect(page).to have_content('トップページに戻る')
       # トップページに戻るリンクをクリック(削除パスに飛ぶ)とcountryモデルのカウントが１減る
@@ -107,23 +111,17 @@ RSpec.describe "国関連", type: :system do
     it 'ログインしているユーザーは他の人の国情報を削除できない' do
       # ログインする
       sign_in(@country2.user)
-      # 飛行機の一覧ページを訪れる
-      visit country_planes_path(@country1)
-      # トップページに戻るリンクがある
-      expect(page).to have_content('トップページに戻る')
-      # リンクをクリックすると削除されず（countryモデルのカウントは変わらず）トップページへ移行する
-      expect{
-        find_link('トップページに戻る', href: country_path(@country1)).click
-      }.to change { Country.count }.by(0)
+      # 国の詳細ページを訪れる
+      visit country_path(@country1)
+      # トップページに移動させられる
       expect(current_path).to eq (root_path)
-
     
     end
 
     it 'ログインしていないユーザーは国情報を削除できない' do
       # トップページにいく
       visit root_path
-      # 飛行機の一覧ページを訪れる
+      # 国の詳細ページを訪れる
       visit country_planes_path(@country1)
       # ログインページへと移動させられる
       expect(current_path).to eq (new_user_session_path)

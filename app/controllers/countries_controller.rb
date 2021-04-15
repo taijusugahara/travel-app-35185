@@ -1,6 +1,6 @@
 class CountriesController < ApplicationController
-before_action :authenticate_user!, except: [:index, :show]
-before_action :move_to_root, only: [:edit, :update, :destroy]
+before_action :authenticate_user!, except: :index
+before_action :move_to_root, only: [:destroy, :show]
   def index
   end
 
@@ -12,7 +12,7 @@ before_action :move_to_root, only: [:edit, :update, :destroy]
     
     @country = Country.new(country_params)
     if @country.save
-     redirect_to country_planes_path(@country.id)
+     redirect_to country_path(@country.id)
   
       
     else
@@ -21,17 +21,10 @@ before_action :move_to_root, only: [:edit, :update, :destroy]
   end
   def show
     @country = Country.find(params[:id])
+    @plane = Plane.find_by(country_id: @country.id)
   end
 
-  def edit
-    @country = Country.find(params[:id])
-  end
-
-  def update
-    @country = Country.find(params[:id])
-      @country.update(country_params)
-      redirect_to country_planes_path(@country.id)
-  end
+ 
 
   def destroy
     @country = Country.find(params[:id])
