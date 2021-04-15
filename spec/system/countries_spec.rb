@@ -40,47 +40,7 @@ RSpec.describe "国関連", type: :system do
 
 
 end
-# RSpec.describe "国関連", type: :system do
-  
-#   before do
-#     @country1 = FactoryBot.create(:country)
-    
-#     @country2 = FactoryBot.create(:country)
-#   end
 
-#   context '国情報を変更'do
-#     it 'ログインしているユーザーは自身の国情報を変更できる' do
-#       # ログインする
-#       sign_in(@country1.user)
-#       # 編集ページを訪れる
-#       visit edit_country_path(@country1)
-#       # 情報を入力する
-#       select 'カンボジア', from: 'country[name]'
-#       # 送信する
-#       find('input[name="commit"]').click
-#       # planesのindexページに移動する
-#       expect(current_path).to eq (country_planes_path(@country1))
-      
-#     end
-#     it 'ログインしたユーザーは他のユーザーの国情報を変更できない' do
-#        # ログインする
-#        sign_in(@country2.user)
-#        # 他の編集ページを訪れようとする
-#        visit edit_country_path(@country1)
-#        #ログインページに移動させられる
-#        expect(current_path).to eq (root_path)
-#     end
-
-#     it 'ログインしていないユーザーは国情報を変更できない' do
-#       # トップページにいく
-#       visit root_path
-#       # 国変更ページにいこうとする
-#       visit edit_country_path(@country1)
-#       # ログインページへと移動させられる
-#       expect(current_path).to eq (new_user_session_path)
-#     end
-#   end
-# end
 RSpec.describe "国関連", type: :system do
   
   before do

@@ -1,6 +1,6 @@
 class CountriesController < ApplicationController
 before_action :authenticate_user!, except: :index
-before_action :move_to_root, only: [:edit, :update, :destroy, :show]
+before_action :move_to_root, only: [:destroy, :show]
   def index
   end
 
@@ -24,15 +24,7 @@ before_action :move_to_root, only: [:edit, :update, :destroy, :show]
     @plane = Plane.find_by(country_id: @country.id)
   end
 
-  def edit
-    @country = Country.find(params[:id])
-  end
-
-  def update
-    @country = Country.find(params[:id])
-      @country.update(country_params)
-      redirect_to country_path(@country.id)
-  end
+ 
 
   def destroy
     @country = Country.find(params[:id])

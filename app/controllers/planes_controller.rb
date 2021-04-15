@@ -1,5 +1,7 @@
 class PlanesController < ApplicationController
   before_action :authenticate_user!
+  before_action :move_to_root
+
   def index
     @country = Country.find(params[:country_id])
 
@@ -65,4 +67,8 @@ class PlanesController < ApplicationController
     params.require(:plane).permit(:country_plane_id, :go_date, :back_date).merge(user_id: current_user.id, country_id: params[:country_id])
   end
 
+  def move_to_root
+    @country = Country.find(params[:country_id])
+    redirect_to root_path if current_user.id != @country.user.id 
+  end
 end

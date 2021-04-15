@@ -21,8 +21,15 @@ ActiveRecord::Schema.define(version: 2021_04_14_085705) do
   end
 
   create_table "hotels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "country_hotel_id", null: false
+    t.integer "day", null: false
+    t.integer "total_price", null: false
+    t.bigint "user_id", null: false
+    t.bigint "country_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_hotels_on_country_id"
+    t.index ["user_id"], name: "index_hotels_on_user_id"
   end
 
   create_table "planes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -56,6 +63,8 @@ ActiveRecord::Schema.define(version: 2021_04_14_085705) do
   end
 
   add_foreign_key "countries", "users"
+  add_foreign_key "hotels", "countries"
+  add_foreign_key "hotels", "users"
   add_foreign_key "planes", "countries"
   add_foreign_key "planes", "users"
 end
