@@ -2,7 +2,7 @@ class PlanesController < ApplicationController
   before_action :authenticate_user!
   def index
     @country = Country.find(params[:country_id])
-    
+
   end
 
   def new
@@ -28,6 +28,35 @@ class PlanesController < ApplicationController
 
     end
     
+  end
+
+  def edit
+    @country = Country.find(params[:country_id])
+    @plane = Plane.find(params[:id])
+    @thai = ThaiPlane.all
+    @cambo = CamboPlane.all
+    @vet = VetPlane.all
+  end
+
+  def update
+    @country = Country.find(params[:country_id])
+    @plane = Plane.find(params[:id])
+    if @plane.update(plane_params)
+      redirect_to country_path(@country.id)
+    else
+      @country = Country.find(params[:country_id])
+      @thai = ThaiPlane.all
+      @cambo = CamboPlane.all
+      @vet = VetPlane.all
+      render :edit
+    end
+  end
+
+  def destroy
+    @country = Country.find(params[:country_id])
+    @plane = Plane.find(params[:id])
+    @plane.destroy
+    redirect_to country_path(@country.id)
   end
   
 

@@ -1,9 +1,22 @@
+<%= @country.name %>へようこそ！
+<% unless @country.plane %>
 <div>
 <%= link_to "飛行機を選ぶ", country_planes_path(@country.id) %> 
 </div>
+<% end %>
+
+<% if @country.plane %>
+<div>
+<%= link_to "飛行機を変更する", edit_country_plane_path(@country.id,@plane.id) %> 
+</div>
+<div>
+<%= link_to "飛行機を取り消す", country_plane_path(@country.id,@plane.id), method: :delete %> 
+</div>
+<% end %>
 <div>
 <%= link_to "国を選びなおす", edit_country_path(@country.id) %> 
 </div>
+
 <div>
 <%= link_to "トップページに戻る", country_path(@country.id), method: :delete %> ＊注意！これまでの情報は破棄されます。
 </div>

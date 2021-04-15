@@ -1,0 +1,76 @@
+  <%= form_with model: [@country,@plane], local: true do |f|%> 
+     <%= @country.name %>行き 
+    <p>どの飛行機で行きますか</p>
+    <%= render 'shared/error_messages', model: f.object %>
+
+      
+      <% if @country.name == 'タイ'%>
+      
+     
+        <% @thai.each do |thai| %>
+          
+            <p class="price"><%= thai.name %></p>
+            <p class="price"><%= thai.price %>円</p> 
+          
+        <% end %>
+     
+        <%= f.collection_select(:country_plane_id, ThaiPlane.all, :id, :name, {prompt:"選択してください"}, {class:"select-box", id:"item-category"}) %>
+      <% elsif @country.name == 'カンボジア' %>
+      
+        <% @cambo.each do |cambo| %>
+          
+            <p class="price"><%= cambo.name %></p>
+            <p class="price"><%= cambo.price %>円</p> 
+          
+        <% end %>
+       
+        <%= f.collection_select(:country_plane_id, CamboPlane.all, :id, :name, {prompt:"選択してください"}, {class:"select-box", id:"item-category"}) %>
+      <% else %>
+      
+        <% @vet.each do |vet| %>
+          
+            <p class="price"><%= vet.name %></p>
+            <p class="price"><%= vet.price %>円</p> 
+          
+        <% end %>
+        
+        <%= f.collection_select(:country_plane_id, VetPlane.all, :id, :name, {prompt:"選択してください"}, {class:"select-box", id:"item-category"}) %>
+      <% end %>
+
+  
+    
+    
+          <div class='input-birth-wrap'>
+          <p>行きの日程</p>
+            <%= raw sprintf(
+                        f.date_select(
+                          :go_date,
+                          class:'select-birth',
+                          id:"go-date",
+                          use_month_numbers: true,
+                          prompt:'--',
+                          start_year: (Time.now.year),
+                          end_year: (Time.now.year + 1),
+                          date_separator: '%s'),
+                        "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+          </div>
+
+              <div class='input-birth-wrap'>
+              <p>帰りの日程</p>
+                <%= raw sprintf(
+                            f.date_select(
+                              :back_date,
+                              class:'select-birth',
+                              id:"back-date",
+                              use_month_numbers: true,
+                              prompt:'--',
+                              start_year: (Time.now.year),
+                              end_year: (Time.now.year + 1),
+                              date_separator: '%s'),
+                            "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+              </div>
+
+        <%= f.submit class: 'chat-room-form__action-btn'%>
+     
+  <% end %>
+
