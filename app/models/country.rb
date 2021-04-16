@@ -3,6 +3,7 @@ class Country < ApplicationRecord
  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :kuni
  has_one :plane, dependent: :destroy
+ has_one :hotel, dependent: :destroy
 
   with_options presence: true do
     

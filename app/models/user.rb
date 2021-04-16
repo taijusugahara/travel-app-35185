@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
     has_many :countries
     has_many :planes
+    has_many :hotels
   
   with_options presence: true do
     validates :nickname

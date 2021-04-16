@@ -1,0 +1,17 @@
+<%= @country.name %>へようこそ！
+
+
+
+
+<div>飛行機を選ぼう
+<ul>
+
+<li> ホテルA</li>
+<li> ホテルB</li>
+<li> ホテルC </li>
+</ul>
+<div>
+<%= link_to "ホテルを予約する", new_country_hotel_path(@country.id) %> 
+</div>
+
+</div>

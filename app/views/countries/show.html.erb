@@ -14,6 +14,23 @@
 </div>
 <% end %>
 
+<% unless @country.hotel %>
+<div>
+<%= link_to "ホテルを選ぶ",  country_hotels_path(@country.id) %> 
+</div>
+<% end %>
+<%# <% if @country.hotel%>
+<%# <div>あなたのホテル情報</div> %> 
+
+   <%# <%= @hotel.country_hotel.name %>  
+<%# <%= @hotel.country_hotel_id.price%> 
+<%# <div><%= @hotel.day%></div> 
+<%# <div><%= @hotel.go_date%></div> 
+<%# <div><%= @hotel.back_date%></div> 
+<%# <% end %> 
+
+
+
 <div>
 <%= link_to "トップページに戻る", country_path(@country.id), method: :delete %> ＊注意！これまでの情報は破棄されます。
 </div>

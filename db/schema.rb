@@ -21,9 +21,11 @@ ActiveRecord::Schema.define(version: 2021_04_14_085705) do
   end
 
   create_table "hotels", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "country_hotel_id", null: false
+    t.string "name", null: false
+    t.integer "price", null: false
     t.integer "day", null: false
-    t.integer "total_price", null: false
+    t.date "go_date", null: false
+    t.date "back_date", null: false
     t.bigint "user_id", null: false
     t.bigint "country_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -33,7 +35,8 @@ ActiveRecord::Schema.define(version: 2021_04_14_085705) do
   end
 
   create_table "planes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "country_plane_id", null: false
+    t.string "name", null: false
+    t.integer "price", null: false
     t.date "go_date", null: false
     t.date "back_date", null: false
     t.bigint "user_id", null: false

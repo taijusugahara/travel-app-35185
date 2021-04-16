@@ -64,7 +64,7 @@ class PlanesController < ApplicationController
 
   private
   def plane_params
-    params.require(:plane).permit(:country_plane_id, :go_date, :back_date).merge(user_id: current_user.id, country_id: params[:country_id])
+    params.require(:plane).permit(:name, :price, :go_date, :back_date).merge(user_id: current_user.id, country_id: params[:country_id])
   end
 
   def move_to_root
