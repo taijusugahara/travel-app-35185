@@ -1,0 +1,93 @@
+<%= form_with model: [@country,@hotel], local: true do |f|%> 
+     <%= @country.name %>行き 
+    <p>どのホテルに泊まりますか</p>
+    <%= render 'shared/error_messages', model: f.object %>
+
+      
+      <% if @country.name == 'タイ'%>
+      
+     
+        <% @thai.each do |thai| %>
+          
+            <p class="price"><%= thai.name %></p>
+            <p class="price"><%= thai.price %>円</p> 
+          
+        <% end %>
+     
+        <%= f.collection_select(:name, ThaiHotel.all, :name, :name, {prompt:"ホテルを選択してください"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:price, ThaiHotel.all, :price, :price, {prompt:"値段を選択してください"}, {class:"select-box", id:"hotel-price"}) %>
+      
+
+      <% elsif @country.name == 'カンボジア' %>
+      
+        <% @cambo.each do |cambo| %>
+          
+            <p class="price"><%= cambo.name %></p>
+            <p class="price"><%= cambo.price %>円</p> 
+          
+        <% end %>
+       
+        <%= f.collection_select(:name, CamboHotel.all, :name, :name, {prompt:"ホテルを選択してください"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:price, CamboHotel.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"hotel-price"}) %>
+      <% else %>
+      
+        <% @vet.each do |vet| %>
+          
+            <p class="price"><%= vet.name %></p>
+            <p class="price"><%= vet.price %>円</p> 
+          
+        <% end %>
+        
+        <%= f.collection_select(:name, VetHotel.all, :name, :name, {prompt:"ホテルを選択してください"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:price, VetHotel.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"hotel-price"}) %>
+      <% end %>
+      
+     
+
+          <div>宿泊日数
+          <%= f.text_field :day %>日
+          </div>
+
+          
+
+    <div class='input-birth-wrap'>
+          <p>到着の日程</p>
+            <%= raw sprintf(
+                        f.date_select(
+                          :go_date,
+                          class:'select_go',
+                          id:"go_date",
+                          use_month_numbers: true,
+                          prompt:'--',
+                          start_year: (Time.now.year),
+                          end_year: (Time.now.year + 1),
+                          date_separator: '%s'),
+                        "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+          </div>
+
+              <div class='input-birth-wrap'>
+              <p>帰りの日程</p>
+                <%= raw sprintf(
+                            f.date_select(
+                              :back_date,
+                              class:'select_back',
+                              id:"back_date",
+                              use_month_numbers: true,
+                              prompt:'--',
+                              start_year: (Time.now.year),
+                              end_year: (Time.now.year + 1),
+                              date_separator: '%s'),
+                            "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+              </div>
+         <div>
+          <span>合計金額</span> 
+          <span id="total_price">◯◯ </span> 円
+          </div>
+              
+        <%= f.submit class: 'chat-room-form__action-btn'%>
+     
+   
+
+<% end %>
+
+
