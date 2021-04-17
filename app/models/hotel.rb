@@ -5,7 +5,10 @@ class Hotel < ApplicationRecord
   belongs_to :thai_hotel ||:cambo_hotel ||:vet_hotel
 
   with_options presence: true do
-    validates :name, :price, :day, :go_date, :back_date
+    validates :name, :price, :go_date, :back_date
+     with_options numericality: { greater_than_or_equal_to: 1} do
+      validates :day
+     end
   end
   
      
