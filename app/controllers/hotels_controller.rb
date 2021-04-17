@@ -1,4 +1,6 @@
 class HotelsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :move_to_root
   def index
     @country = Country.find(params[:country_id])
   end
@@ -64,5 +66,9 @@ class HotelsController < ApplicationController
     params.require(:hotel).permit(:name, :price, :day, :go_date, :back_date).merge(user_id: current_user.id, country_id: params[:country_id])
   end
 
+  def move_to_root
+    @country = Country.find(params[:country_id])
+    redirect_to root_path if current_user.id != @country.user.id 
+  end
 
 end

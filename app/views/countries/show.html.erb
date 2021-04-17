@@ -7,10 +7,10 @@
 
 <% if @country.plane %>
 <div> 選択した飛行機情報 </div>
-<div>飛行機名<%=@hotel.name%></div>
-<div>料金<%=@hotel.price%>円</div>
-<div>行きの日程<%=@hotel.go_date%></div>
-<div>帰りの日程<%=@hotel.back_date%></div>
+<div>飛行機名<%=@plane.name%></div>
+<div>料金<%=@plane.price%>円</div>
+<div>行きの日程<%=@plane.go_date%></div>
+<div>帰りの日程<%=@plane.back_date%></div>
 <div>
 <%= link_to "飛行機を変更する", edit_country_plane_path(@country.id,@plane.id) %> 
 </div>
