@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_14_085705) do
+ActiveRecord::Schema.define(version: 2021_04_18_234347) do
 
   create_table "countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -32,6 +32,33 @@ ActiveRecord::Schema.define(version: 2021_04_14_085705) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["country_id"], name: "index_hotels_on_country_id"
     t.index ["user_id"], name: "index_hotels_on_user_id"
+  end
+
+  create_table "infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "passport_number", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "nationality", null: false
+    t.date "birthday", null: false
+    t.string "sex", null: false
+    t.string "registered_place", null: false
+    t.date "issue_date", null: false
+    t.date "expiry_date", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "country_id", null: false
+    t.bigint "plane_id"
+    t.bigint "hotel_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_orders_on_country_id"
+    t.index ["hotel_id"], name: "index_orders_on_hotel_id"
+    t.index ["plane_id"], name: "index_orders_on_plane_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "planes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -68,6 +95,8 @@ ActiveRecord::Schema.define(version: 2021_04_14_085705) do
   add_foreign_key "countries", "users"
   add_foreign_key "hotels", "countries"
   add_foreign_key "hotels", "users"
+  add_foreign_key "orders", "countries"
+  add_foreign_key "orders", "users"
   add_foreign_key "planes", "countries"
   add_foreign_key "planes", "users"
 end

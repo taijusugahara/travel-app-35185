@@ -3,7 +3,7 @@ class Plane < ApplicationRecord
   belongs_to :country
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :thai_plane ||:cambo_plane ||:vet_plane
-
+  has_one :order
  
   
   with_options presence: true do

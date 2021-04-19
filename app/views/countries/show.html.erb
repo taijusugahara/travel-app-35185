@@ -50,8 +50,21 @@
 <%# <div><%= @hotel.go_date%></div> 
 <%# <div><%= @hotel.back_date%></div> 
 <%# <% end %> 
+<div>合計金額
+<% if @country.plane && @country.hotel%>
+<%= @plane.price + @hotel.price * @hotel.day%>
+<% elsif @country.plane%>
+<%= @plane.price%>
+<% elsif @country.hotel%>
+<%= @hotel.price * @hotel.day%>
+<% else %>
+◯◯
+<% end %>
+円</div>
 
-
+<div>購入！
+<%= link_to "購入ページにいく", country_orders_path(@country.id)%>
+</div>
 
 <div>
 <%= link_to "トップページに戻る", country_path(@country.id), method: :delete %> ＊注意！これまでの情報は破棄されます。

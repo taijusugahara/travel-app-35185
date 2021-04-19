@@ -6,6 +6,7 @@ class User < ApplicationRecord
     has_many :countries
     has_many :planes
     has_many :hotels
+    has_many :orders
   
   with_options presence: true do
     validates :nickname
