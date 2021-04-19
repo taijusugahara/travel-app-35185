@@ -20,13 +20,14 @@ RSpec.describe "Planes", type: :system do
       # 飛行機選択ページを訪れる
       visit new_country_plane_path(@country1)
       # 情報を入力する
-      select '飛行機A', from: "plane[country_plane_id]"
+      select '飛行機A', from: "plane[name]"
+      select '20000', from: "plane[price]"
       select '2021', from: 'plane[go_date(1i)]'
-      select '5', from: 'plane[go_date(2i)]'
+      select '9', from: 'plane[go_date(2i)]'
       select '20', from: 'plane[go_date(3i)]'
       select '2021', from: 'plane[back_date(1i)]'
-      select '6', from: 'plane[back_date(2i)]'
-      select '10', from: 'plane[back_date(3i)]'
+      select '9', from: 'plane[back_date(2i)]'
+      select '30', from: 'plane[back_date(3i)]'
       # 送信するとCountryモデルのカウントが１上がる。
       expect{
         find('input[name="commit"]').click
@@ -61,7 +62,6 @@ RSpec.describe "Planes", type: :system do
   before do
     @plane1 = FactoryBot.create(:plane)
     @plane2 = FactoryBot.create(:plane)
-    @country3 =FactoryBot.create(:country)
   end
     context '飛行機変更'do
       it '飛行機を選択したユーザーは自身の飛行機を変更できる'do
@@ -74,12 +74,13 @@ RSpec.describe "Planes", type: :system do
       # 飛行機変更ページを訪れる
       visit edit_country_plane_path(@plane1.country,@plane1)
       # 情報を入力する
-      select '飛行機C', from: "plane[country_plane_id]"
+      select '飛行機B', from: "plane[name]"
+      select '50000', from: "plane[price]"
       select '2021', from: 'plane[go_date(1i)]'
-      select '6', from: 'plane[go_date(2i)]'
+      select '10', from: 'plane[go_date(2i)]'
       select '25', from: 'plane[go_date(3i)]'
       select '2021', from: 'plane[back_date(1i)]'
-      select '7', from: 'plane[back_date(2i)]'
+      select '11', from: 'plane[back_date(2i)]'
       select '14', from: 'plane[back_date(3i)]'
       # 送信する
       find('input[name="commit"]').click

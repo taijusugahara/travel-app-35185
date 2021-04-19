@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :countries, except: [:edit, :update] do
     resources :planes, except: :show
     resources :hotels, except: :show
+    resources :orders, only: [:index,:create]
   end
 end

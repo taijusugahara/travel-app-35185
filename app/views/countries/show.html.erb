@@ -6,6 +6,11 @@
 <% end %>
 
 <% if @country.plane %>
+<div> 選択した飛行機情報 </div>
+<div>飛行機名<%=@plane.name%></div>
+<div>料金<%=@plane.price%>円</div>
+<div>行きの日程<%=@plane.go_date%></div>
+<div>帰りの日程<%=@plane.back_date%></div>
 <div>
 <%= link_to "飛行機を変更する", edit_country_plane_path(@country.id,@plane.id) %> 
 </div>
@@ -13,6 +18,53 @@
 <%= link_to "飛行機を取り消す", country_plane_path(@country.id,@plane.id), method: :delete %> 
 </div>
 <% end %>
+
+<% unless @country.hotel %>
+<div>
+<%= link_to "ホテルを選ぶ",  country_hotels_path(@country.id) %> 
+</div>
+
+<% end %>
+
+<% if @country.hotel %>
+<div> 選択したホテル情報 </div>
+<div>ホテル名<%=@hotel.name%></div>
+<div>料金<%=@hotel.price%>円</div>
+<div>宿泊日数<%=@hotel.day%>日</div>
+<div>チェックイン日<%=@hotel.go_date%></div>
+<div>チェックアウト日<%=@hotel.back_date%></div>
+<div>合計金額<%=@hotel.price * @hotel.day %>円</div>
+<div>
+<%= link_to "ホテルを変更する",  edit_country_hotel_path(@country.id,@hotel.id) %> 
+</div>
+<div>
+<%= link_to "ホテルを取り消す", country_hotel_path(@country.id,@hotel.id), method: :delete %> 
+</div>
+<% end %>
+<%# <% if @country.hotel%>
+<%# <div>あなたのホテル情報</div> %> 
+
+   <%# <%= @hotel.country_hotel.name %>  
+<%# <%= @hotel.country_hotel_id.price%> 
+<%# <div><%= @hotel.day%></div> 
+<%# <div><%= @hotel.go_date%></div> 
+<%# <div><%= @hotel.back_date%></div> 
+<%# <% end %> 
+<div>合計金額
+<% if @country.plane && @country.hotel%>
+<%= @plane.price + @hotel.price * @hotel.day%>
+<% elsif @country.plane%>
+<%= @plane.price%>
+<% elsif @country.hotel%>
+<%= @hotel.price * @hotel.day%>
+<% else %>
+◯◯
+<% end %>
+円</div>
+
+<div>購入！
+<%= link_to "購入ページにいく", country_orders_path(@country.id)%>
+</div>
 
 <div>
 <%= link_to "トップページに戻る", country_path(@country.id), method: :delete %> ＊注意！これまでの情報は破棄されます。

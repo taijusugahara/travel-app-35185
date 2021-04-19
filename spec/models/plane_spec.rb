@@ -12,10 +12,17 @@ RSpec.describe Plane, type: :model do
     end
 
     context '飛行機情報を登録できない時' do
-      it 'country_plane_idが空の時登録できない' do
-        @plane.country_plane_id = ''
+      
+      it 'nameが空の時登録できない' do
+        @plane.name = ''
         @plane.valid?
-        expect(@plane.errors.full_messages).to include ("Country plane can't be blank")
+        expect(@plane.errors.full_messages).to include ("Name can't be blank")
+      end
+
+      it 'priceが空の時登録できない' do
+        @plane.price = ''
+        @plane.valid?
+        expect(@plane.errors.full_messages).to include ("Price can't be blank")
       end
 
       it 'go_dateが空の時登録できない' do
