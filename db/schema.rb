@@ -40,12 +40,14 @@ ActiveRecord::Schema.define(version: 2021_04_18_234347) do
     t.string "last_name", null: false
     t.string "nationality", null: false
     t.date "birthday", null: false
-    t.string "sex", null: false
+    t.string "gender", null: false
     t.string "registered_place", null: false
     t.date "issue_date", null: false
     t.date "expiry_date", null: false
+    t.bigint "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_infos_on_order_id"
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -95,6 +97,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_234347) do
   add_foreign_key "countries", "users"
   add_foreign_key "hotels", "countries"
   add_foreign_key "hotels", "users"
+  add_foreign_key "infos", "orders"
   add_foreign_key "orders", "countries"
   add_foreign_key "orders", "users"
   add_foreign_key "planes", "countries"
