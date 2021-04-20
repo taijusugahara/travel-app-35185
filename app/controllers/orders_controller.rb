@@ -1,9 +1,11 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :move_to_root
   def index
     @country = Country.find(params[:country_id])
     @plane = Plane.find_by(country_id: @country.id)
     @hotel = Hotel.find_by(country_id: @country.id)
-    @ordr= Order.new
+    @order= OrderInfo.new
   end
 
   def create
@@ -12,10 +14,12 @@ class OrdersController < ApplicationController
     @plane = Plane.find_by(country_id: @country.id)
     @hotel = Hotel.find_by(country_id: @country.id)
     
-    # binding.pry
+    
     if @country.plane && @country.hotel
-      @order = Order.new(order_params_c)
-      if @order.save!
+      @order = OrderInfo.new(order_params_c)
+      if @order.valid?
+        pay_order_c
+         @order.save
         
         redirect_to root_path
       else
@@ -23,8 +27,10 @@ class OrdersController < ApplicationController
       end
     
     elsif @country.plane
-      @order = Order.new(order_params_a)
-      if @order.save!
+      @order = OrderInfo.new(order_params_a)
+      if @order.valid?
+        pay_order_a
+        @order.save
         
         redirect_to root_path
       else
@@ -33,8 +39,10 @@ class OrdersController < ApplicationController
     
 
     elsif @country.hotel
-      @order = Order.new(order_params_b)
-      if @order.save!
+      @order = OrderInfo.new(order_params_b)
+      if @order.valid?
+        pay_order_b
+        @order.save
         
         redirect_to root_path
       else
@@ -54,15 +62,46 @@ class OrdersController < ApplicationController
 
   private
   def order_params_a
-    params.permit().merge(user_id: current_user.id, country_id: @country.id, plane_id: @plane.id)
+    params.require(:order_info).permit(:passport_number, :first_name, :last_name, :nationality, :birthday, :gender, :registered_place, :issue_date, :expiry_date).merge(user_id: current_user.id, country_id: @country.id, plane_id: @plane.id,token: params[:token])
   end
 
   def order_params_b
-    params.permit().merge(user_id: current_user.id, country_id: @country.id, hotel_id: @hotel.id)
+    params.require(:order_info).permit(:passport_number, :first_name, :last_name, :nationality, :birthday, :gender, :registered_place, :issue_date, :expiry_date).merge(user_id: current_user.id, country_id: @country.id, hotel_id: @hotel.id,token: params[:token])
   end
 
   def order_params_c
-    params.permit().merge(user_id: current_user.id, country_id: @country.id, plane_id: @plane.id, hotel_id: @hotel.id)
+    params.require(:order_info).permit(:passport_number, :first_name, :last_name, :nationality, :birthday, :gender, :registered_place, :issue_date, :expiry_date).merge(user_id: current_user.id, country_id: @country.id, plane_id: @plane.id, hotel_id: @hotel.id,token: params[:token])
   end
 
+  def pay_order_a
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::Charge.create(
+      amount: @plane.price,
+      card: order_params_a[:token],
+      currency: 'jpy'
+    )
+  end
+
+  def pay_order_b
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::Charge.create(
+      amount: @hotel.price * @hotel.day,
+      card: order_params_b[:token],
+      currency: 'jpy'
+    )
+  end
+
+  def pay_order_c
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::Charge.create(
+      amount: @plane.price + @hotel.price * @hotel.day,
+      card: order_params_c[:token],
+      currency: 'jpy'
+    )
+  end
+
+  def move_to_root
+    @country = Country.find(params[:country_id])
+    redirect_to root_path if current_user.id != @country.user.id 
+  end
 end
