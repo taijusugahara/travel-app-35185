@@ -1,10 +1,10 @@
-<%= render "shared/second-header"%>
 
 <div class='transaction-contents'>
   <div class='transaction-main'>
     <h1 class='transaction-title-text'>
       購入内容の確認
     </h1>
+    <%= link_to "戻る", country_path(@country.id) %>
     <%# 購入内容の表示 %>
     <% if @country.plane %>
     <div> 選択した飛行機情報 </div>
@@ -196,4 +196,3 @@
   </div>
 </div>
 </div>
-<%= render "shared/second-footer"%>

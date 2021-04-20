@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :move_to_root
   def index
     @country = Country.find(params[:country_id])
     @plane = Plane.find_by(country_id: @country.id)
@@ -96,5 +98,10 @@ class OrdersController < ApplicationController
       card: order_params_c[:token],
       currency: 'jpy'
     )
+  end
+
+  def move_to_root
+    @country = Country.find(params[:country_id])
+    redirect_to root_path if current_user.id != @country.user.id 
   end
 end

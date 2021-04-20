@@ -1,0 +1,168 @@
+require 'rails_helper'
+
+RSpec.describe OrderInfo, type: :model do
+  describe '購入' do
+    before do
+      user = FactoryBot.create(:user)
+      country = FactoryBot.create(:country)
+      plane = FactoryBot.create(:plane)
+      hotel = FactoryBot.create(:hotel)
+      @order_info = FactoryBot.build(:order_info, user_id: user.id, country_id: country.id, plane_id: plane.id, hotel_id: hotel.id)
+    end
+    # planeとhotelはassosiation(validation)を掛けていないのでnilにしても通ってしまうが、その場合戻るアクションを設定しているので問題ない
+    context '購入ができる時' do
+      it '購入ページの全ての情報が入力されていれば購入できる' do
+        expect(@order_info).to be_valid
+      end
+
+    end
+
+    context '購入できない時' do
+      it 'passport_numberが空の場合は購入できない' do
+        @order_info.passport_number = ''
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Passport number can't be blank")
+      end
+
+      it 'passport_numberが全角を含む場合は購入できない' do
+        @order_info.passport_number = '１２３４５６ABC'
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Passport number is invalid")
+      end
+
+      it 'passport_numberが数字だけの場合は購入できない' do
+        @order_info.passport_number = '123456'
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Passport number is invalid")
+      end
+
+      it 'passport_numberが半角英語大文字だけの場合は購入できない' do
+        @order_info.passport_number = 'ABCDEFG'
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Passport number is invalid")
+      end
+
+      it 'passport_numberが半角英語小文字だけの場合は購入できない' do
+        @order_info.passport_number = 'abcdef'
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Passport number is invalid")
+      end
+
+      it 'passport_numberが半角英語小文字と数字の場合は購入できない' do
+        @order_info.passport_number = 'abcde12345'
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Passport number is invalid")
+      end
+
+      it 'first_nameが空の場合は購入できない' do
+        @order_info.first_name = ''
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("First name can't be blank")
+      end
+
+      it 'first_namerが全角の場合は購入できない' do
+        @order_info.first_name = '山田'
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("First name is invalid")
+      end
+
+      it 'first_namerが半角英語小文字の場合は購入できない' do
+        @order_info.first_name = 'yamada'
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("First name is invalid")
+      end
+
+      it 'last_nameが空の場合は購入できない' do
+        @order_info.last_name = ''
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Last name can't be blank")
+      end
+
+      it 'last_namerが全角の場合は購入できない' do
+        @order_info.last_name = '太郎'
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Last name is invalid")
+      end
+
+      it 'last_namerが半角英語小文字の場合は購入できない' do
+        @order_info.last_name = 'tarou'
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Last name is invalid")
+      end
+
+      it 'nationalityが空の場合は購入できない' do
+        @order_info.nationality = ''
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Nationality can't be blank")
+      end
+
+      it 'nationalityが全角の場合は購入できない' do
+        @order_info.nationality = '日本'
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Nationality is invalid")
+      end
+
+      it 'nationalityが半角英語小文字の場合は購入できない' do
+        @order_info.nationality = 'japan'
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Nationality is invalid")
+      end
+
+      it 'registered_placeが空の場合は購入できない' do
+        @order_info.registered_place = ''
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Registered place can't be blank")
+      end
+
+      it 'registered_placeが全角の場合は購入できない' do
+        @order_info.registered_place = '大阪'
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Registered place is invalid")
+      end
+
+      it 'registered_placeが半角英語小文字の場合は購入できない' do
+        @order_info.registered_place = 'osaka'
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Registered place is invalid")
+      end
+
+      it 'genderが空の場合は購入できない' do
+        @order_info.gender = ''
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Gender can't be blank")
+      end
+
+      it 'birthdayが空の場合は購入できない' do
+        @order_info.birthday = ''
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Birthday can't be blank")
+      end
+
+      it 'issue_dateが空の場合は購入できない' do
+        @order_info.issue_date = ''
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Issue date can't be blank")
+      end
+
+      it 'expiry_dateが空の場合は購入できない' do
+        @order_info.expiry_date = ''
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Expiry date can't be blank")
+      end
+
+      it 'userが空の場合は購入できない' do
+        @order_info.user_id = nil
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'countryが空の場合は購入できない' do
+        @order_info.country_id = nil
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include("Country can't be blank")
+      end
+
+    end
+
+  end
+end
