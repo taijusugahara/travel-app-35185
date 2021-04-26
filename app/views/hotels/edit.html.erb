@@ -42,7 +42,9 @@
         <%= f.collection_select(:price, VetHotel.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"hotel-price"}) %>
       <% end %>
       
-     
+        <div>人数
+       <%= f.text_field :howmany %>人
+       </div>
 
           <div>宿泊日数
           <%= f.text_field :day %>日

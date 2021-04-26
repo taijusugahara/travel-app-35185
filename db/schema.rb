@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_18_234347) do
+ActiveRecord::Schema.define(version: 2021_04_26_023436) do
 
   create_table "countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_234347) do
     t.bigint "country_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "howmany"
     t.index ["country_id"], name: "index_hotels_on_country_id"
     t.index ["user_id"], name: "index_hotels_on_user_id"
   end
@@ -63,6 +64,20 @@ ActiveRecord::Schema.define(version: 2021_04_18_234347) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "plane_gos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.integer "howmany", null: false
+    t.date "go_date", null: false
+    t.string "go_time", null: false
+    t.bigint "user_id", null: false
+    t.bigint "country_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_plane_gos_on_country_id"
+    t.index ["user_id"], name: "index_plane_gos_on_user_id"
+  end
+
   create_table "planes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.integer "price", null: false
@@ -72,6 +87,9 @@ ActiveRecord::Schema.define(version: 2021_04_18_234347) do
     t.bigint "country_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "go_time"
+    t.string "back_time"
+    t.integer "howmany"
     t.index ["country_id"], name: "index_planes_on_country_id"
     t.index ["user_id"], name: "index_planes_on_user_id"
   end
@@ -100,6 +118,8 @@ ActiveRecord::Schema.define(version: 2021_04_18_234347) do
   add_foreign_key "infos", "orders"
   add_foreign_key "orders", "countries"
   add_foreign_key "orders", "users"
+  add_foreign_key "plane_gos", "countries"
+  add_foreign_key "plane_gos", "users"
   add_foreign_key "planes", "countries"
   add_foreign_key "planes", "users"
 end

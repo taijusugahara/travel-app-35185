@@ -23,6 +23,7 @@ RSpec.describe "Hotels", type: :system do
       # 情報を入力する
       select 'ホテルあいうえお', from: "hotel[name]"
       select '3000', from: "hotel[price]"
+      fill_in 'hotel[howmany]', with: '2'
       fill_in 'hotel[day]', with: '2'
       select '2021', from: 'hotel[go_date(1i)]'
       select '8', from: 'hotel[go_date(2i)]'
@@ -80,6 +81,7 @@ RSpec.describe "Hotels", type: :system do
       # 情報を入力する
       select 'ホテルかきくけこ', from: "hotel[name]"
       select '5000', from: "hotel[price]"
+      fill_in 'hotel[howmany]', with: '4'
       fill_in 'hotel[day]', with: '3'
       select '2021', from: 'hotel[go_date(1i)]'
       select '9', from: 'hotel[go_date(2i)]'

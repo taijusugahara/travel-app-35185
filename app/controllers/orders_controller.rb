@@ -76,7 +76,7 @@ class OrdersController < ApplicationController
   def pay_order_a
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      amount: @plane.price,
+      amount: @plane.price * @plane.howmany,
       card: order_params_a[:token],
       currency: 'jpy'
     )
@@ -85,7 +85,7 @@ class OrdersController < ApplicationController
   def pay_order_b
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      amount: @hotel.price * @hotel.day,
+      amount: @hotel.price * @hotel.day * @hotel.howmany,
       card: order_params_b[:token],
       currency: 'jpy'
     )
@@ -94,7 +94,7 @@ class OrdersController < ApplicationController
   def pay_order_c
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
-      amount: @plane.price + @hotel.price * @hotel.day,
+      amount: @plane.price * @plane.howmany + @hotel.price * @hotel.day * @hotel.howmany,
       card: order_params_c[:token],
       currency: 'jpy'
     )

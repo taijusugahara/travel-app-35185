@@ -15,7 +15,7 @@
         <% end %>
      
         <%= f.collection_select(:name, ThaiPlane.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
-        <%= f.collection_select(:price, ThaiPlane.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:price, ThaiPlane.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
       <% elsif @country.name == 'カンボジア' %>
       
         <% @cambo.each do |cambo| %>
@@ -26,7 +26,7 @@
         <% end %>
        
         <%= f.collection_select(:name, CamboPlane.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
-        <%= f.collection_select(:price, CamboPlane.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:price, CamboPlane.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
       <% else %>
       
         <% @vet.each do |vet| %>
@@ -37,8 +37,12 @@
         <% end %>
         
         <%= f.collection_select(:name, VetPlane.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
-        <%= f.collection_select(:price, VetPlane.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:price, VetPlane.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
       <% end %>
+
+      <div>人数を入力
+       <%= f.text_field :howmany %>人
+       </div>
 
   
     
@@ -72,7 +76,14 @@
                               date_separator: '%s'),
                             "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
               </div>
+        <%= f.collection_select(:go_time, Timehour.all, :name, :name, {prompt:"行きの出発時刻を選択してください"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:back_time, Timehour.all, :name, :name, {prompt:"帰りの出発時刻を選択してください"}, {class:"select-box", id:"item-category"}) %>
 
+        <div>
+          <span>合計金額</span> 
+          <span id="total_price">◯◯ </span> 円
+          </div>
+          
         <%= f.submit class: 'chat-room-form__action-btn'%>
      
   <% end %>
