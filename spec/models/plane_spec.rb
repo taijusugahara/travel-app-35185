@@ -25,6 +25,32 @@ RSpec.describe Plane, type: :model do
         expect(@plane.errors.full_messages).to include ("Price can't be blank")
       end
 
+      it 'howmanyが空の時登録できない' do
+        @plane.howmany = ''
+        @plane.valid?
+        expect(@plane.errors.full_messages).to include ("Howmany can't be blank")
+      end
+
+      it 'howmanyが全角の時登録できない' do
+        @plane.howmany = '１２'
+        @plane.valid?
+        expect(@plane.errors.full_messages).to include ("Howmany is not a number")
+      end
+
+      it 'howmanyが半角英語の時登録できない' do
+        @plane.howmany = 'abc'
+        @plane.valid?
+        expect(@plane.errors.full_messages).to include ("Howmany is not a number")
+      end
+
+      it 'howmanyが0以下の時登録できない' do
+        @plane.howmany = 0
+        @plane.valid?
+        expect(@plane.errors.full_messages).to include ("Howmany must be greater than or equal to 1")
+      end
+
+
+
       it 'go_dateが空の時登録できない' do
         @plane.go_date = ''
         @plane.valid?
@@ -54,6 +80,18 @@ RSpec.describe Plane, type: :model do
         @plane.back_date = '2021/5/1'
         @plane.valid?
         expect(@plane.errors.full_messages).to include ("Back date は出発日以降のものを選択してください")
+      end
+
+      it 'go_timeが空の時登録できない' do
+        @plane.go_time = ''
+        @plane.valid?
+        expect(@plane.errors.full_messages).to include ("Go time can't be blank")
+      end
+
+      it 'back_timeが空の時登録できない' do
+        @plane.back_time = ''
+        @plane.valid?
+        expect(@plane.errors.full_messages).to include ("Back time can't be blank")
       end
 
       it 'userが空の時登録できない' do

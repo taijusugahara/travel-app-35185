@@ -60,25 +60,11 @@
                         "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
           </div>
 
-              <div class='input-birth-wrap'>
-              <p>帰りの日程</p>
-                <%= raw sprintf(
-                            f.date_select(
-                              :back_date,
-                              class:'select-birth',
-                              id:"back-date",
-                              use_month_numbers: true,
-                              prompt:'--',
-                              start_year: (Time.now.year),
-                              end_year: (Time.now.year + 1),
-                              date_separator: '%s'),
-                            "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
-              </div>
+              
 
 
         <%= f.collection_select(:go_time, Timehour.all, :name, :name, {prompt:"行きの出発時刻を選択してください"}, {class:"select-box", id:"item-category"}) %>
-        <%= f.collection_select(:back_time, Timehour.all, :name, :name, {prompt:"帰りの出発時刻を選択してください"}, {class:"select-box", id:"item-category"}) %>
-
+       
         <div>
           <span>合計金額</span> 
           <span id="total_price">◯◯ </span> 円

@@ -106,7 +106,7 @@ end
      fill_in 'user[password]', with: ''
      # ログインボタンを押す
      find('input[name="commit"]').click
-     # トップページに移行する
+     # 変わらずログインページのまま
      expect(current_path).to eq (new_user_session_path)
     end
   end

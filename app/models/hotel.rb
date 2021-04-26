@@ -7,7 +7,7 @@ class Hotel < ApplicationRecord
   with_options presence: true do
     validates :name, :price, :go_date, :back_date
      with_options numericality: { greater_than_or_equal_to: 1} do
-      validates :day
+      validates :day, :howmany
      end
   end
   

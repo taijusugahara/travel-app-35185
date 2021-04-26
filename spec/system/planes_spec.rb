@@ -22,12 +22,15 @@ RSpec.describe "Planes", type: :system do
       # 情報を入力する
       select '飛行機A', from: "plane[name]"
       select '20000', from: "plane[price]"
+      fill_in 'plane[howmany]', with: 4
       select '2021', from: 'plane[go_date(1i)]'
       select '9', from: 'plane[go_date(2i)]'
       select '20', from: 'plane[go_date(3i)]'
       select '2021', from: 'plane[back_date(1i)]'
       select '9', from: 'plane[back_date(2i)]'
       select '30', from: 'plane[back_date(3i)]'
+      select '03:00', from: 'plane[go_time]'
+      select '09:00', from: 'plane[back_time]'
       # 送信するとCountryモデルのカウントが１上がる。
       expect{
         find('input[name="commit"]').click
@@ -76,12 +79,15 @@ RSpec.describe "Planes", type: :system do
       # 情報を入力する
       select '飛行機B', from: "plane[name]"
       select '50000', from: "plane[price]"
+      fill_in 'plane[howmany]', with: 2
       select '2021', from: 'plane[go_date(1i)]'
       select '10', from: 'plane[go_date(2i)]'
       select '25', from: 'plane[go_date(3i)]'
       select '2021', from: 'plane[back_date(1i)]'
       select '11', from: 'plane[back_date(2i)]'
       select '14', from: 'plane[back_date(3i)]'
+      select '03:00', from: 'plane[go_time]'
+      select '09:00', from: 'plane[back_time]'
       # 送信する
       find('input[name="commit"]').click
       # 国詳細ページへ移動する

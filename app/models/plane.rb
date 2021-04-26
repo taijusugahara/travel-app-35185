@@ -3,11 +3,15 @@ class Plane < ApplicationRecord
   belongs_to :country
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :thai_plane ||:cambo_plane ||:vet_plane
+  belongs_to :timehour
   # has_one :order
  
   
   with_options presence: true do
-    validates :name, :price, :go_date, :back_date
+    validates :name, :price, :go_date, :back_date, :go_time, :back_time
+    with_options numericality: { greater_than_or_equal_to: 1} do
+      validates :howmany
+    end
   end
   
      

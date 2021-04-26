@@ -63,7 +63,7 @@ class HotelsController < ApplicationController
 
   private
   def hotel_params
-    params.require(:hotel).permit(:name, :price, :day, :go_date, :back_date).merge(user_id: current_user.id, country_id: params[:country_id])
+    params.require(:hotel).permit(:name, :price, :howmany, :day, :go_date, :back_date).merge(user_id: current_user.id, country_id: params[:country_id])
   end
 
   def move_to_root

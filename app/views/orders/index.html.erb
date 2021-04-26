@@ -10,8 +10,12 @@
     <div> 選択した飛行機情報 </div>
     <div>飛行機名<%=@plane.name%></div>
     <div>料金<%=@plane.price%>円</div>
+    <div>人数<%=@plane.howmany%>人</div>
     <div>行きの日程<%=@plane.go_date%></div>
     <div>帰りの日程<%=@plane.back_date%></div>
+    <div>行きの出発時間<%=@plane.go_time%></div>
+    <div>帰りの出発時間<%=@plane.back_time%></div>
+    <div>合計金額<%=@plane.price * @plane.howmany%>円</div>
     <div>
     <% end %>
 
@@ -19,20 +23,22 @@
     <div> 選択したホテル情報 </div>
     <div>ホテル名<%=@hotel.name%></div>
     <div>料金<%=@hotel.price%>円</div>
+    <div>人数<%=@hotel.howmany%>人</div>
     <div>宿泊日数<%=@hotel.day%>日</div>
     <div>チェックイン日<%=@hotel.go_date%></div>
     <div>チェックアウト日<%=@hotel.back_date%></div>
-    <div>合計金額<%=@hotel.price * @hotel.day %>円</div>
+    <div>合計金額<%=@hotel.price * @hotel.day * @hotel.howmany %>円</div>
     <div>
     <% end %>
 
     <div>合計金額
+    <%# 合計金額　単体の場合は書かなくても良いかも　かぶる %>
     <% if @country.plane && @country.hotel%>
-    <%= @plane.price + @hotel.price * @hotel.day%>
+    <%= @plane.price * @plane.howmany + @hotel.price * @hotel.day * @hotel.howmany%>
     <% elsif @country.plane%>
-    <%= @plane.price%>
+    <%= @plane.price * @plane.howmany%>
     <% elsif @country.hotel%>
-    <%= @hotel.price * @hotel.day%>
+    <%= @hotel.price * @hotel.day * @hotel.howmany%>
     <% else %>
     ◯◯
     <% end %>

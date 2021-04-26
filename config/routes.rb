@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'countries#index' 
   resources :countries, except: [:edit, :update] do
     resources :planes, except: :show
+    resources :plane_gos, except: :show
     resources :hotels, except: :show
     resources :orders, only: [:index,:create]
   end

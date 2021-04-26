@@ -31,6 +31,31 @@ RSpec.describe Hotel, type: :model do
         expect(@hotel.errors.full_messages).to include("Price 料金が選択したホテルと合致しません")
       end
 
+      it 'howmanyが空の時登録できない' do
+        @hotel.howmany=''
+        @hotel.valid?
+        expect(@hotel.errors.full_messages).to include("Howmany can't be blank")
+      end
+
+      it 'howmanyが全角の時登録できない' do
+        @hotel.howmany='１０'
+        @hotel.valid?
+        expect(@hotel.errors.full_messages).to include("Howmany is not a number")
+      end
+
+      it 'howmanyが半角英語の時登録できない' do
+        @hotel.howmany='abc'
+        @hotel.valid?
+        expect(@hotel.errors.full_messages).to include("Howmany is not a number")
+      end
+
+      it 'howmanyが0以下の時登録できない' do
+        @hotel.howmany= 0
+        @hotel.valid?
+        expect(@hotel.errors.full_messages).to include("Howmany must be greater than or equal to 1")
+      end
+
+
       it 'dayが空の時登録できない' do
         @hotel.day=''
         @hotel.valid?
