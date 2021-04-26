@@ -6,6 +6,7 @@ class Country < ApplicationRecord
  has_one :plane_go, dependent: :destroy
  has_one :plane_back, dependent: :destroy
  has_one :hotel, dependent: :destroy
+ has_one :tour, dependent: :destroy
  has_one :order
   with_options presence: true do
     

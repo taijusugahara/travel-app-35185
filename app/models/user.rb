@@ -8,6 +8,7 @@ class User < ApplicationRecord
     has_many :plane_gos
     has_many :plane_backs
     has_many :hotels
+    has_many :tours
     has_many :orders
   
   with_options presence: true do
