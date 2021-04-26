@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_023436) do
+ActiveRecord::Schema.define(version: 2021_04_26_053540) do
 
   create_table "countries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +62,20 @@ ActiveRecord::Schema.define(version: 2021_04_26_023436) do
     t.index ["hotel_id"], name: "index_orders_on_hotel_id"
     t.index ["plane_id"], name: "index_orders_on_plane_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "plane_backs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.integer "howmany", null: false
+    t.date "back_date", null: false
+    t.string "back_time", null: false
+    t.bigint "user_id", null: false
+    t.bigint "country_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["country_id"], name: "index_plane_backs_on_country_id"
+    t.index ["user_id"], name: "index_plane_backs_on_user_id"
   end
 
   create_table "plane_gos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -118,6 +132,8 @@ ActiveRecord::Schema.define(version: 2021_04_26_023436) do
   add_foreign_key "infos", "orders"
   add_foreign_key "orders", "countries"
   add_foreign_key "orders", "users"
+  add_foreign_key "plane_backs", "countries"
+  add_foreign_key "plane_backs", "users"
   add_foreign_key "plane_gos", "countries"
   add_foreign_key "plane_gos", "users"
   add_foreign_key "planes", "countries"
