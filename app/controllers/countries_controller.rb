@@ -23,6 +23,7 @@ before_action :move_to_root, only: [:destroy, :show]
     @country = Country.find(params[:id])
     @plane = Plane.find_by(country_id: @country.id)
     @plane_go = PlaneGo.find_by(country_id: @country.id)
+    @plane_back = PlaneBack.find_by(country_id: @country.id)
     @hotel = Hotel.find_by(country_id: @country.id)
   end
 

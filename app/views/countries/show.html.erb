@@ -51,6 +51,24 @@
 </div>
 <% end %>
 
+<% if @country.plane_back %>
+<div> 選択した飛行機情報 </div>
+<div>飛行機名<%=@plane_back.name%></div>
+<div>料金<%=@plane_back.price%>円</div>
+<div>人数<%=@plane_back.howmany%>人</div>
+<div>行きの日程<%=@plane_back.back_date%></div>
+<div>行きの出発時間<%=@plane_back.back_time%></div>
+<div>合計金額<%=@plane_back.price * @plane_back.howmany%>円</div>
+<div>
+<%= link_to "飛行機(帰り)を変更する", edit_country_plane_back_path(@country.id,@plane_back.id) %> 
+</div>
+<div>
+<%= link_to "飛行機(帰り)を取り消す", country_plane_back_path(@country.id,@plane_back.id), method: :delete %> 
+</div>
+<% end %>
+
+
+
 <% unless @country.hotel %>
 <div>
 <%= link_to "ホテルを選ぶ",  country_hotels_path(@country.id) %> 
