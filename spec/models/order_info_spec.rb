@@ -6,8 +6,11 @@ RSpec.describe OrderInfo, type: :model do
       user = FactoryBot.create(:user)
       country = FactoryBot.create(:country)
       plane = FactoryBot.create(:plane)
+      plane_go = FactoryBot.create(:plane_go)
+      plane_back = FactoryBot.create(:plane_back)
       hotel = FactoryBot.create(:hotel)
-      @order_info = FactoryBot.build(:order_info, user_id: user.id, country_id: country.id, plane_id: plane.id, hotel_id: hotel.id)
+      tour = FactoryBot.create(:tour)
+      @order_info = FactoryBot.build(:order_info, user_id: user.id, country_id: country.id, plane_id: plane.id, plane_go_id: plane_go.id, plane_back_id: plane_back.id, hotel_id: hotel.id, tour_id: tour.id)
     end
     # planeとhotelはassosiation(validation)を掛けていないのでnilにしても通ってしまうが、その場合戻るアクションを設定しているので問題ない
     context '購入ができる時' do
