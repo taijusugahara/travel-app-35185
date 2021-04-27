@@ -56,8 +56,8 @@
 <div>飛行機名<%=@plane_back.name%></div>
 <div>料金<%=@plane_back.price%>円</div>
 <div>人数<%=@plane_back.howmany%>人</div>
-<div>行きの日程<%=@plane_back.back_date%></div>
-<div>行きの出発時間<%=@plane_back.back_time%></div>
+<div>帰りの日程<%=@plane_back.back_date%></div>
+<div>帰りの出発時間<%=@plane_back.back_time%></div>
 <div>合計金額<%=@plane_back.price * @plane_back.howmany%>円</div>
 <div>
 <%= link_to "飛行機(帰り)を変更する", edit_country_plane_back_path(@country.id,@plane_back.id) %> 
@@ -126,13 +126,29 @@
 <%# <div><%= @hotel.go_date%></div> 
 <%# <div><%= @hotel.back_date%></div> 
 <%# <% end %> 
-<div>合計金額
-<% if @country.plane && @country.hotel%>
+<div>お支払い金額
+<% if @country.tour%>
+<%= @tour.price * @tour.howmany%>
+<% elsif @country.plane && @country.hotel%>
 <%= @plane.price * @plane.howmany + @hotel.price * @hotel.day * @hotel.howmany%>
 <% elsif @country.plane%>
 <%= @plane.price * @plane.howmany%>
+<% elsif @country.plane_go && @country.plane_back && @country.hotel%>
+<%= @plane_go.price * @plane_go.howmany + @plane_back.price * @plane_back.howmany + @hotel.price * @hotel.day * @hotel.howmany%>
+<% elsif @country.plane_go && @country.hotel%>
+<%= @plane_go.price * @plane_go.howmany + @hotel.price * @hotel.day * @hotel.howmany%>
+<% elsif @country.plane_back && @country.hotel%>
+<%= @plane_back.price * @plane_back.howmany + @hotel.price * @hotel.day * @hotel.howmany%>
+<% elsif @country.plane_go && @country.plane_back%>
+<%= @plane_go.price * @plane_go.howmany + @plane_back.price * @plane_back.howmany%>
 <% elsif @country.hotel%>
 <%= @hotel.price * @hotel.day * @hotel.howmany%>
+<% elsif @country.plane_go%>
+<%= @plane_go.price * @plane_go.howmany%>
+<% elsif @country.plane_back%>
+<%= @plane_back.price * @plane_back.howmany%>
+
+
 <% else %>
 ◯◯
 <% end %>

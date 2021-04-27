@@ -4,7 +4,10 @@ class OrdersController < ApplicationController
   def index
     @country = Country.find(params[:country_id])
     @plane = Plane.find_by(country_id: @country.id)
+    @plane_go = PlaneGo.find_by(country_id: @country.id)
+    @plane_back = PlaneBack.find_by(country_id: @country.id)
     @hotel = Hotel.find_by(country_id: @country.id)
+    @tour = Tour.find_by(country_id: @country.id)
     @order= OrderInfo.new
   end
 
