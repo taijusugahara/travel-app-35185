@@ -92,6 +92,31 @@
 <%= link_to "ホテルを取り消す", country_hotel_path(@country.id,@hotel.id), method: :delete %> 
 </div>
 <% end %>
+
+<% unless @country.tour %>
+<div>
+<%= link_to "ツアーを選ぶ", country_tours_path(@country.id) %> 
+</div>
+<% end %>
+
+<% if @country.tour %>
+<div> 選択したツアー情報 </div>
+<div>ツアー名<%=@tour.name%></div>
+<div>料金<%=@tour.price%>円</div>
+<div>期間<%=@tour.span%>日</div>
+<div>人数<%=@tour.howmany%>人</div>
+<div>出発日<%=@tour.go_date%></div>
+<div>合計金額<%=@tour.price * @tour.howmany %>円</div>
+<div>
+<%= link_to "ツアーを変更する",  edit_country_tour_path(@country.id,@tour.id) %> 
+</div>
+<div>
+<%= link_to "ツアーを取り消す", country_tour_path(@country.id,@tour.id), method: :delete %> 
+</div>
+<% end %>
+
+
+
 <%# <% if @country.hotel%>
 <%# <div>あなたのホテル情報</div> %> 
 

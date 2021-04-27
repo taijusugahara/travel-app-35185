@@ -56,11 +56,17 @@ ActiveRecord::Schema.define(version: 2021_04_26_071247) do
     t.bigint "country_id", null: false
     t.bigint "plane_id"
     t.bigint "hotel_id"
+    t.bigint "plane_go_id"
+    t.bigint "plane_back_id"
+    t.bigint "tour_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["country_id"], name: "index_orders_on_country_id"
     t.index ["hotel_id"], name: "index_orders_on_hotel_id"
+    t.index ["plane_back_id"], name: "index_orders_on_plane_back_id"
+    t.index ["plane_go_id"], name: "index_orders_on_plane_go_id"
     t.index ["plane_id"], name: "index_orders_on_plane_id"
+    t.index ["tour_id"], name: "index_orders_on_tour_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -112,6 +118,7 @@ ActiveRecord::Schema.define(version: 2021_04_26_071247) do
     t.string "name", null: false
     t.integer "price", null: false
     t.integer "howmany", null: false
+    t.integer "span", null: false
     t.date "go_date", null: false
     t.bigint "user_id", null: false
     t.bigint "country_id", null: false

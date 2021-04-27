@@ -1,0 +1,62 @@
+  <%= form_with model: [@country,@tour], local: true do |f|%> 
+     <%= @country.name %>行き 
+    <p>どのツアーで行きますか</p>
+    <%= render 'shared/error_messages', model: f.object %>
+
+      
+      <% if @country.name == 'タイ'%>
+      
+     
+        <% @thai.each do |thai| %>
+          
+            <p class="price"><%= thai.name %></p>
+            <p class="price"><%= thai.price %>円</p> 
+            <p class="price"><%= thai.span %>日</p> 
+          
+        <% end %>
+     
+        <%= f.collection_select(:name, ThaiTour.all, :name, :name, {prompt:"ツアーを選択してください"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:price, ThaiTour.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
+        <%= f.collection_select(:span, ThaiTour.all, :span, :span, {prompt:"期間を選択してください"}, {class:"select-box", id:"item-category"}) %>
+      <% elsif @country.name == 'カンボジア' %>
+      
+        <% @cambo.each do |cambo| %>
+          
+            <p class="price"><%= cambo.name %></p>
+            <p class="price"><%= cambo.price %>円</p> 
+            <p class="price"><%= cambo.span %>日</p> 
+        <% end %>
+       
+        <%= f.collection_select(:name, CamboTour.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:price, CamboTour.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
+         <%= f.collection_select(:span, CamboTour.all, :span, :span, {prompt:"期間を選択してください"}, {class:"select-box", id:"item-category"}) %>
+      <% else %>
+      
+        <% @vet.each do |vet| %>
+          
+            <p class="price"><%= vet.name %></p>
+            <p class="price"><%= vet.price %>円</p> 
+            <p class="price"><%= vet.span %>日</p> 
+          
+        <% end %>
+        
+        <%= f.collection_select(:name, VetTour.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:price, VetTour.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
+         <%= f.collection_select(:span, VetTour.all, :span, :span, {prompt:"期間を選択してください"}, {class:"select-box", id:"item-category"}) %>
+      <% end %>
+      <div>人数
+       <%= f.text_field :howmany %>人
+       </div>
+
+         <%= f.collection_select(:go_date, TourSpan.all, :name, :name, {prompt:"出発日を選択してください"}, {class:"select-box", id:"item-category"}) %>
+    
+          <div>
+          <span>合計金額</span> 
+          <span id="total_price">◯◯ </span> 円
+          </div>
+    
+         
+        <%= f.submit class: 'chat-room-form__action-btn'%>
+     
+  <% end %>
+

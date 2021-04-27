@@ -4,6 +4,7 @@ class CreateTours < ActiveRecord::Migration[6.0]
       t.string :name, null: false
       t.integer :price, null: false
       t.integer :howmany, null: false
+      t.integer :span, null: false
       t.date :go_date, null: false
       t.references :user, null: false,foreign_key: true
       t.references :country, null: false,foreign_key: true

@@ -6,6 +6,9 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.references :country, null: false,foreign_key: true
       t.references :plane
       t.references :hotel
+      t.references :plane_go
+      t.references :plane_back
+      t.references :tour
       
       t.timestamps
     end
