@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>パパッと変わる性格診断</title>
+  <meta charset="utf-8">
+  <%# <link rel="stylesheet" type="text/css" href="index.css"> %>
+</head>
+<body>
+</script>
+
+<div class="choose_box">
+      <div class="app-theme">
+        <p>あなたに合う国を診断しよう(全5問)</p>
+        <p>気に入った画像を選んでください</p>
+        
+      </div>
+
+
+ <!-- ここから５つ質問を記述 -->
+      <!-- 質問1 -->
+      <div id="q_01" class="fit">
+        <p> </p>
+        <ul>
+          <li><a class="btn" href="#q_02" data-value="a"><%= image_tag '/images/thai1.png', class: 'image-logo' %></a></li>
+          <li><a class="btn" href="#q_02" data-value="b"><%= image_tag '/images/cambo1.png', class: 'image-logo' %></a></li>
+          <li><a class="btn" href="#q_02" data-value="c"><%= image_tag '/images/vet1.png', class: 'image-logo' %></a></li>
+        </ul>
+      </div>
+
+      <!-- 質問2 -->
+      <div id="q_02" style="display: none;">
+        <p> </p>
+        <ul>
+          <li><a class="btn" href="#q_03" data-value="a"><%= image_tag '/images/thai2.png', class: 'image-logo' %></a></li>
+          <li><a class="btn" href="#q_03" data-value="b"><%= image_tag '/images/cambo2.png', class: 'image-logo' %></a></li>
+          <li><a class="btn" href="#q_03" data-value="c"><%= image_tag '/images/vet2.png', class: 'image-logo' %></a></li>
+        </ul>
+      </div>
+
+      <!-- 質問3 -->
+      <div id="q_03" style="display: none;">
+        <p></p>
+        <ul>
+          <li><a class="btn" href="#q_04" data-value="a"><%= image_tag '/images/thai3.png', class: 'image-logo' %></a></li>
+          <li><a class="btn" href="#q_04" data-value="b"><%= image_tag '/images/cambo3.png', class: 'image-logo' %></a></li>
+          <li><a class="btn" href="#q_04" data-value="c"><%= image_tag '/images/vet3.png', class: 'image-logo' %></a></li>
+        </ul>
+      </div>
+
+      <!-- 質問4 -->
+      <div id="q_04" style="display: none;">
+        <p></p>
+        <ul>
+          <li><a class="btn" href="#q_05" data-value="a"><%= image_tag '/images/thai4.png', class: 'image-logo' %></a></li>
+          <li><a class="btn" href="#q_05" data-value="b"><%= image_tag '/images/cambo4.png', class: 'image-logo' %></a></li>
+          <li><a class="btn" href="#q_05" data-value="c"><%= image_tag '/images/vet4.png', class: 'image-logo' %></a></li>
+        </ul>
+      </div>
+
+      <!-- 質問5 -->
+      <div id="q_05" style="display: none;">
+        <p></p>
+        <ul>
+          <li><a class="btn end" data-value="a"><%= image_tag '/images/thai5.png', class: 'image-logo' %></a></li>
+          <li><a class="btn end" data-value="b"><%= image_tag '/images/cambo5.png', class: 'image-logo' %></a></li>
+          <li><a class="btn end" data-value="c"><%= image_tag '/images/vet5.png', class: 'image-logo' %></a></li>
+        </ul>
+      </div>
+
+
+
+<!-- ここから以下回答 -->
+  <!-- 回答の答え1 -->
+     <div id="answer_01" class="result" style="display: none;">
+      <div class="result_theme ">
+            <p>あなたにおすすめの国はタイです</p>
+      </div>
+      
+       <div class="return-btn">
+        <%=link_to "もどる", root_path %>
+       </div>
+     </div>
+
+
+
+  <!-- 回答の答え2 -->
+     <div id="answer_02" style="display: none;">
+          <div class="result_theme ">
+            <p>あなたにおすすめの国はカンボジアです</p>
+          </div>
+     
+       <div class="return-btn">
+        <%=link_to "もどる", root_path %>
+       </div>
+     </div>
+
+      <!-- 回答の答え3 -->
+     <div id="answer_03" style="display: none;">
+          <div class="result_theme ">
+            <p>あなたにおすすめの国はベトナムです</p>
+          </div>
+     
+       <div class="return-btn">
+        <%=link_to "もどる", root_path %>
+       </div>
+     </div>
+
+     <!-- 回答の答え4 -->
+     <div id="answer_04" style="display: none;">
+          <div class="result_theme ">
+            <p>あなたにおすすめの国はタイです</p>
+            <p>あなたにおすすめの国はカンボジアです</p>
+          </div>
+     
+       <div class="return-btn">
+        <%=link_to "もどる", root_path %>
+       </div>
+     </div>
+      <!-- 回答の答え5 -->
+     <div id="answer_05" style="display: none;">
+          <div class="result_theme ">
+            <p>あなたにおすすめの国はタイです</p>
+            <p>あなたにおすすめの国はベトナムです</p>
+          </div>
+     
+       <div class="return-btn">
+        <%=link_to "もどる", root_path %>
+       </div>
+     </div>
+      <!-- 回答の答え6 -->
+     <div id="answer_06" style="display: none;">
+          <div class="result_theme ">
+            <p>あなたにおすすめの国はカンボジアです</p>
+            <p>あなたにおすすめの国はベトナムです</p>
+          </div>
+     
+       <div class="return-btn">
+        <%=link_to "もどる", root_path %>
+       </div>
+     </div>
+ <!-- この辺に回答を記述 -->
+ </div>
+
+
+
+
+  <%# <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> %>
+  <%# <script type="text/javascript" src="index.js"></script> %>
+</body>
+</html>

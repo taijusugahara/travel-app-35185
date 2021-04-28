@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'static_pages/quiz'
   devise_for :users
   root to: 'countries#index' 
   resources :countries, except: [:edit, :update] do
@@ -8,5 +9,7 @@ Rails.application.routes.draw do
     resources :hotels, except: :show
     resources :tours, except: :show
     resources :orders, only: [:index,:create]
+  
   end
+  resources :quizs, only: :index
 end
