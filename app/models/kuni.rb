@@ -4,6 +4,8 @@ class Kuni < ActiveHash::Base
     { id: 1, name: 'タイ' },
     { id: 2, name: 'カンボジア' },
     { id: 3, name: 'ベトナム' },
+    { id: 4, name: 'マレーシア' },
+    { id: 5, name: 'シンガポール' },
   ]
 
   include ActiveHash::Associations

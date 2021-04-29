@@ -27,7 +27,7 @@
        
         <%= f.collection_select(:name, CamboPlane.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
         <%= f.collection_select(:price, CamboPlane.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
-      <% else %>
+      <% elsif @country.name =='ベトナム' %>
       
         <% @vet.each do |vet| %>
           
@@ -38,6 +38,29 @@
         
         <%= f.collection_select(:name, VetPlane.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
         <%= f.collection_select(:price, VetPlane.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
+
+         <% elsif @country.name == 'マレーシア' %>
+         <% @malaysia.each do |malaysia| %>
+          
+            <p class="price"><%= malaysia.name %></p>
+            <p class="price"><%= malaysia.price %>円</p> 
+          
+        <% end %>
+        
+        <%= f.collection_select(:name, MalaysiaPlane.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:price, MalaysiaPlane.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
+
+        <% elsif @country.name == 'シンガポール' %>
+      
+        <% @singapore.each do |singapore| %>
+          
+            <p class="price"><%= singapore.name %></p>
+            <p class="price"><%= singapore.price %>円</p> 
+          
+        <% end %>
+        
+        <%= f.collection_select(:name, SingaporePlane.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:price, SingaporePlane.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
       <% end %>
 
       <div>人数を入力

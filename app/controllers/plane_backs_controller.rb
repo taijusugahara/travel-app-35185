@@ -11,6 +11,8 @@ class PlaneBacksController < ApplicationController
     @thai = ThaiPlaneBack.all
     @cambo = CamboPlaneBack.all
     @vet = VetPlaneBack.all
+    @malaysia = MalaysiaPlaneBack.all
+    @singapore = SingaporePlaneBack.all
   end
 
   def create
@@ -24,6 +26,8 @@ class PlaneBacksController < ApplicationController
       @thai = ThaiPlaneBack.all
       @cambo = CamboPlaneBack.all
       @vet = VetPlaneBack.all
+      @malaysia = MalaysiaPlaneBack.all
+      @singapore = SingaporePlaneBack.all
       render :new
     end
   end
@@ -34,6 +38,8 @@ class PlaneBacksController < ApplicationController
     @thai = ThaiPlaneBack.all
     @cambo = CamboPlaneBack.all
     @vet = VetPlaneBack.all
+    @malaysia = MalaysiaPlaneBack.all
+    @singapore = SingaporePlaneBack.all
   end
 
   def update
@@ -46,6 +52,8 @@ class PlaneBacksController < ApplicationController
       @thai = ThaiPlaneBack.all
       @cambo = CamboPlaneBack.all
       @vet = VetPlaneBack.all
+      @malaysia = MalaysiaPlaneBack.all
+      @singapore = SingaporePlaneBack.all
       render :edit
     end
   end

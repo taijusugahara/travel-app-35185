@@ -13,6 +13,8 @@ class HotelsController < ApplicationController
     @thai = ThaiHotel.all
     @cambo = CamboHotel.all
     @vet = VetHotel.all
+    @malaysia = MalaysiaHotel.all
+    @singapore = SingaporeHotel.all
   end
 
   def create
@@ -26,6 +28,8 @@ class HotelsController < ApplicationController
       @thai = ThaiHotel.all
       @cambo = CamboHotel.all
       @vet = VetHotel.all
+      @malaysia = MalaysiaHotel.all
+      @singapore = SingaporeHotel.all
       render :new
 
     end
@@ -37,6 +41,8 @@ class HotelsController < ApplicationController
       @thai = ThaiHotel.all
       @cambo = CamboHotel.all
       @vet = VetHotel.all
+      @malaysia = MalaysiaHotel.all
+      @singapore = SingaporeHotel.all
     end
 
     def update
@@ -50,6 +56,8 @@ class HotelsController < ApplicationController
         @thai = ThaiHotel.all
         @cambo = CamboHotel.all
         @vet = VetHotel.all
+        @malaysia = MalaysiaHotel.all
+       @singapore = SingaporeHotel.all
         render :edit
       end
     end
