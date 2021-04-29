@@ -12,6 +12,8 @@ class ToursController < ApplicationController
     @thai = ThaiTour.all
     @cambo = CamboTour.all
     @vet = VetTour.all
+    @malaysia = MalaysiaTour.all
+    @singapore = SingaporeTour.all
   end
 
   def create
@@ -25,6 +27,8 @@ class ToursController < ApplicationController
       @thai = ThaiTour.all
       @cambo = CamboTour.all
       @vet = VetTour.all
+      @malaysia = MalaysiaTour.all
+      @singapore = SingaporeTour.all
       render :new
 
     end
@@ -37,6 +41,8 @@ class ToursController < ApplicationController
     @thai = ThaiTour.all
     @cambo = CamboTour.all
     @vet = VetTour.all
+    @malaysia = MalaysiaTour.all
+    @singapore = SingaporeTour.all
   end
 
   def update
@@ -49,6 +55,8 @@ class ToursController < ApplicationController
       @thai = ThaiTour.all
       @cambo = CamboTour.all
       @vet = VetTour.all
+      @malaysia = MalaysiaTour.all
+      @singapore = SingaporeTour.all
       render :edit
     end
   end

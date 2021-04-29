@@ -30,7 +30,7 @@
         <%= f.collection_select(:name, CamboTour.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
         <%= f.collection_select(:price, CamboTour.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
          <%= f.collection_select(:span, CamboTour.all, :span, :span, {prompt:"期間を選択してください"}, {class:"select-box", id:"item-category"}) %>
-      <% else %>
+      <% elsif @country.name == 'ベトナム' %>
       
         <% @vet.each do |vet| %>
           
@@ -43,6 +43,35 @@
         <%= f.collection_select(:name, VetTour.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
         <%= f.collection_select(:price, VetTour.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
          <%= f.collection_select(:span, VetTour.all, :span, :span, {prompt:"期間を選択してください"}, {class:"select-box", id:"item-category"}) %>
+
+      <% elsif @country.name == 'マレーシア' %>
+      
+        <% @malaysia.each do |malaysia| %>
+          
+            <p class="price"><%= malaysia.name %></p>
+            <p class="price"><%= malaysia.price %>円</p> 
+            <p class="price"><%= malaysia.span %>日</p> 
+          
+        <% end %>
+        
+        <%= f.collection_select(:name, MalaysiaTour.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:price, MalaysiaTour.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
+         <%= f.collection_select(:span, MalaysiaTour.all, :span, :span, {prompt:"期間を選択してください"}, {class:"select-box", id:"item-category"}) %>
+
+      <% elsif @country.name == 'シンガポール' %>
+      
+        <% @singapore.each do |singapore| %>
+          
+            <p class="price"><%= singapore.name %></p>
+            <p class="price"><%= singapore.price %>円</p> 
+            <p class="price"><%= singapore.span %>日</p> 
+          
+        <% end %>
+        
+        <%= f.collection_select(:name, SingaporeTour.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:price, SingaporeTour.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
+         <%= f.collection_select(:span, SingaporeTour.all, :span, :span, {prompt:"期間を選択してください"}, {class:"select-box", id:"item-category"}) %>
+         
       <% end %>
       <div>人数
        <%= f.text_field :howmany %>人

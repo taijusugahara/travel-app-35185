@@ -2,7 +2,7 @@ class PlaneGo < ApplicationRecord
   belongs_to :user
   belongs_to :country
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :thai_plane_go ||:cambo_plane_go ||:vet_plane_go
+  belongs_to :thai_plane_go ||:cambo_plane_go ||:vet_plane_go||:malaysia_plane_go ||:singapore_plane_go
 
   with_options presence: true do
     validates :name, :price, :go_date, :go_time
@@ -24,7 +24,9 @@ class PlaneGo < ApplicationRecord
       errors.add(:price,"料金が選択した飛行機と合致しません") unless 
       name=='飛行機A'&& price== 15000 ||name=='飛行機B'&& price==20000 || name=='飛行機C'&&price==30000||
       name=='飛行機D'&& price== 17000 ||name=='飛行機E'&& price==25000 || name=='飛行機F'&&price==40000||
-      name=='飛行機G'&& price== 10000 ||name=='飛行機H'&& price==35000 || name=='飛行機I'&&price==60000
+      name=='飛行機G'&& price== 10000 ||name=='飛行機H'&& price==35000 || name=='飛行機I'&&price==60000||
+      name=='飛行機J'&& price== 16000 ||name=='飛行機K'&& price==28000 || name=='飛行機L'&&price==40000||
+      name=='飛行機M'&& price== 19000 ||name=='飛行機N'&& price==35000 || name=='飛行機O'&&price==50000
     end
 
 

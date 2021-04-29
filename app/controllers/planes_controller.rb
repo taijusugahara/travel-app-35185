@@ -13,6 +13,8 @@ class PlanesController < ApplicationController
     @thai = ThaiPlane.all
     @cambo = CamboPlane.all
     @vet = VetPlane.all
+    @malaysia = MalaysiaPlane.all
+    @singapore = SingaporePlane.all
   end
 
   def create
@@ -26,6 +28,8 @@ class PlanesController < ApplicationController
       @thai = ThaiPlane.all
       @cambo = CamboPlane.all
       @vet = VetPlane.all
+      @malaysia = MalaysiaPlane.all
+      @singapore = SingaporePlane.all
       render :new
 
     end
@@ -38,6 +42,8 @@ class PlanesController < ApplicationController
     @thai = ThaiPlane.all
     @cambo = CamboPlane.all
     @vet = VetPlane.all
+    @malaysia = MalaysiaPlane.all
+    @singapore = SingaporePlane.all
   end
 
   def update
@@ -50,6 +56,8 @@ class PlanesController < ApplicationController
       @thai = ThaiPlane.all
       @cambo = CamboPlane.all
       @vet = VetPlane.all
+      @malaysia = MalaysiaPlane.all
+    @singapore = SingaporePlane.all
       render :edit
     end
   end

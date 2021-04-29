@@ -2,7 +2,7 @@ class Hotel < ApplicationRecord
   belongs_to :user
   belongs_to :country 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :thai_hotel ||:cambo_hotel ||:vet_hotel
+  belongs_to :thai_hotel ||:cambo_hotel ||:vet_hotel||:malaysia_hotel ||:singapore_hotel
   # has_one :order
   with_options presence: true do
     validates :name, :price, :go_date, :back_date
@@ -36,7 +36,9 @@ class Hotel < ApplicationRecord
       errors.add(:price,"料金が選択したホテルと合致しません") unless 
       name=='ホテルあいうえお'&& price== 3000 ||name=='ホテルかきくけこ'&& price==5000 || name=='ホテルさしすせそ'&&price==12000||
       name=='ホテルたちつてと'&& price== 4200 ||name=='ホテルなにぬねの'&& price==7500 || name=='ホテルはひふへほ'&&price==15000||
-      name=='ホテルまみむめも'&& price== 500 ||name=='ホテルやゐゆゑよ'&& price==1200 || name=='ホテルわゐうゑを'&&price==9800
+      name=='ホテルまみむめも'&& price== 500 ||name=='ホテルやゐゆゑよ'&& price==1200 || name=='ホテルわゐうゑを'&&price==9800||
+      name=='ホテルアイウエオ'&& price== 1200 ||name=='ホテルカキクケコ'&& price==3300 || name=='ホテルサシスセソ'&&price==7500||
+      name=='ホテルタチツテト'&& price== 6000 ||name=='ホテルナニヌネノ'&& price==9000 || name=='ホテルハヒフヘホ'&&price==14500
      
     end
 end
