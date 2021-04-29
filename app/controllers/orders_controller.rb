@@ -19,13 +19,21 @@ class OrdersController < ApplicationController
     @plane_back = PlaneBack.find_by(country_id: @country.id)
     @hotel = Hotel.find_by(country_id: @country.id)
     @tour = Tour.find_by(country_id: @country.id)
-    
+
+    # メール用
+    country = Country.find(params[:country_id])
+    plane = Plane.find_by(country_id: country.id)
+    plane_go = PlaneGo.find_by(country_id: country.id)
+    plane_back = PlaneBack.find_by(country_id: country.id)
+    hotel = Hotel.find_by(country_id: country.id)
+    tour = Tour.find_by(country_id: country.id)
+    # user = current_user
     if @country.tour
       @order = OrderInfo.new(order_params_j)
       if @order.valid?
         pay_order_j
         @order.save
-        
+        OrderMailer.send_when_admin_reply(country, plane, plane_go, plane_back, hotel, tour).deliver #確認メールを送信
         redirect_to root_path
       else
         render :index
@@ -35,7 +43,7 @@ class OrdersController < ApplicationController
       if @order.valid?
         pay_order_c
          @order.save
-        
+         OrderMailer.send_when_admin_reply(country, plane, plane_go, plane_back, hotel, tour).deliver #確認メールを送信
         redirect_to root_path
       else
         render :index
@@ -46,7 +54,7 @@ class OrdersController < ApplicationController
       if @order.valid?
         pay_order_a
         @order.save
-        
+        OrderMailer.send_when_admin_reply(country, plane, plane_go, plane_back, hotel, tour).deliver #確認メールを送信
         redirect_to root_path
       else
         render :index
@@ -57,7 +65,7 @@ class OrdersController < ApplicationController
       if @order.valid?
         pay_order_i
         @order.save
-        
+        OrderMailer.send_when_admin_reply(country, plane, plane_go, plane_back, hotel, tour).deliver #確認メールを送信
         redirect_to root_path
       else
         render :index
@@ -68,7 +76,7 @@ class OrdersController < ApplicationController
       if @order.valid?
         pay_order_e
         @order.save
-        
+        OrderMailer.send_when_admin_reply(country, plane, plane_go, plane_back, hotel, tour).deliver #確認メールを送信
         redirect_to root_path
       else
         render :index
@@ -79,7 +87,7 @@ class OrdersController < ApplicationController
       if @order.valid?
         pay_order_g
         @order.save
-        
+        OrderMailer.send_when_admin_reply(country, plane, plane_go, plane_back, hotel, tour).deliver #確認メールを送信
         redirect_to root_path
       else
         render :index
@@ -90,7 +98,7 @@ class OrdersController < ApplicationController
       if @order.valid?
         pay_order_h
         @order.save
-        
+        OrderMailer.send_when_admin_reply(country, plane, plane_go, plane_back, hotel, tour).deliver #確認メールを送信
         redirect_to root_path
       else
         render :index
@@ -101,7 +109,7 @@ class OrdersController < ApplicationController
       if @order.valid?
         pay_order_b
         @order.save
-        
+        OrderMailer.send_when_admin_reply(country, plane, plane_go, plane_back, hotel, tour).deliver #確認メールを送信
         redirect_to root_path
       else
         render :index
@@ -112,7 +120,7 @@ class OrdersController < ApplicationController
       if @order.valid?
         pay_order_d
         @order.save
-        
+        OrderMailer.send_when_admin_reply(country, plane, plane_go, plane_back, hotel, tour).deliver #確認メールを送信
         redirect_to root_path
       else
         render :index
@@ -125,7 +133,7 @@ class OrdersController < ApplicationController
       if @order.valid?
         pay_order_f
         @order.save
-        
+        OrderMailer.send_when_admin_reply(country, plane, plane_go, plane_back, hotel, tour).deliver #確認メールを送信
         redirect_to root_path
       else
         render :index
@@ -137,6 +145,7 @@ class OrdersController < ApplicationController
       redirect_to country_path(@country.id)
     end
   end
+
 
     
 

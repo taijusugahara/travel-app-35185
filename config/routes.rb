@@ -12,5 +12,4 @@ Rails.application.routes.draw do
   
   end
   resources :quizs, only: :index
-  resources :users, only: :show
 end
