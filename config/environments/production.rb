@@ -111,7 +111,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   Rails.application.configure do
-    ~
+    
     config.action_mailer.default_url_options = { host: 'travel-app-35185.herokuapp.com' }
     ActionMailer::Base.delivery_method = :smtp
     ActionMailer::Base.smtp_settings = {
