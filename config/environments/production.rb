@@ -118,7 +118,7 @@ Rails.application.configure do
   :user_name=>      ENV['MAIL_USER_NAME'],
   :password=>       ENV['MAIL_PASSWORD'],
   :domain => 'gmail.com',
-  :address => 'smtp.sendgrid.net',
+  :address => 'smtp.gmail.com',
   :port => 587,
   :authentication => :plain,
   :enable_starttls_auto => true
