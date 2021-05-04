@@ -1,5 +1,12 @@
 <%= render "shared/header" %>
-<div>ようこそ東南アジアへ
+<div class="over">
+  <h1 class="south-eastern">ようこそ東南アジアへ</h1>
+  <br>
+  
+  <p>当アプリでは、東南アジアへの飛行機(往復)、飛行機(行き)、飛行機(帰り)、ホテル、ツアーを取り扱っております。</p>
+  <p>それぞれお好きなサービスの組み合わせをご購入いただけます。</p>
+  <p>まずは国を選択しましょう。</p>
+  <br>
 <ul>
 
 <li> タイ</li>
@@ -9,11 +16,17 @@
 <li> シンガポール </li>
 </ul>
 
-<%= link_to "国を選ぶ", new_country_path %>
+<br>
 
-  <div>
-  国診断テストを受ける
-  <a href="/static_pages/quiz"> Quiz</a>
+<%= link_to "国を選ぶ", new_country_path, class:"country" %>
+
+  <div class="shindan">
+    <div class="test"> 国診断テスト</div>
+  <p>お国選びでお悩みのあなたへ！</p>
+  <p>あなたに合う国が見つかるかも！？</p>
+  <p>気に入った画像を選ぶだけ</p>
+  <p>無料です。所要時間1分ほど。お気軽に受けられます！</p>
+  <p><a href="/static_pages/quiz"> 国診断テスト</a>をどうぞ！</p>
   </div>
 
 </div>

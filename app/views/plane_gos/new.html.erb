@@ -7,58 +7,68 @@
       <% if @country.name == 'タイ'%>
       
      
+        <table>
         <% @thai.each do |thai| %>
           
-            <p class="price"><%= thai.name %></p>
-            <p class="price"><%= thai.price %>円</p> 
-          
+            <tr><td><%= thai.name %></td>
+            <td><%= thai.price %>円</td></tr> 
+        
         <% end %>
+        </table>
      
         <%= f.collection_select(:name, ThaiPlaneGo.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
         <%= f.collection_select(:price, ThaiPlaneGo.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
       <% elsif @country.name == 'カンボジア' %>
       
+        <table>
         <% @cambo.each do |cambo| %>
           
-            <p class="price"><%= cambo.name %></p>
-            <p class="price"><%= cambo.price %>円</p> 
+              <tr><td><%= cambo.name %></td>
+              <td><%= cambo.price %>円</td></tr> 
           
         <% end %>
+        </table>
        
         <%= f.collection_select(:name, CamboPlaneGo.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
         <%= f.collection_select(:price, CamboPlaneGo.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
       <% elsif @country.name == 'ベトナム' %>
       
+        <table>
         <% @vet.each do |vet| %>
           
-            <p class="price"><%= vet.name %></p>
-            <p class="price"><%= vet.price %>円</p> 
+             <tr><td><%= vet.name %></td>
+            <td><%= vet.price %>円</td></tr>
           
         <% end %>
+        </table>
         
         <%= f.collection_select(:name, VetPlaneGo.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
         <%= f.collection_select(:price, VetPlaneGo.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
       
       <% elsif @country.name == 'マレーシア' %>
       
+        <table>
         <% @malaysia.each do |malaysia| %>
-          
-            <p class="price"><%= malaysia.name %></p>
-            <p class="price"><%= malaysia.price %>円</p> 
-          
+            
+              <tr><td><%= malaysia.name %></td>
+            <td><%= malaysia.price %>円</td></tr>
+            
         <% end %>
+        </table>
         
         <%= f.collection_select(:name, MalaysiaPlaneGo.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
         <%= f.collection_select(:price, MalaysiaPlaneGo.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
 
         <% elsif @country.name == 'シンガポール' %>
       
+         <table>
         <% @singapore.each do |singapore| %>
           
-            <p class="price"><%= singapore.name %></p>
-            <p class="price"><%= singapore.price %>円</p> 
+             <tr><td><%= singapore.name %></td>
+            <td><%= singapore.price %>円</td></tr>
           
         <% end %>
+        </table>
         
         <%= f.collection_select(:name, SingaporePlaneGo.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
         <%= f.collection_select(:price, SingaporePlaneGo.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"plane-price"}) %>
@@ -86,16 +96,16 @@
           </div>
 
               
-
-
+        <br>
+        <div>行きの出発時間</div>
         <%= f.collection_select(:go_time, Timehour.all, :name, :name, {prompt:"行きの出発時刻を選択してください"}, {class:"select-box", id:"item-category"}) %>
        
         <div>
           <span>合計金額</span> 
           <span id="total_price">◯◯ </span> 円
           </div>
-
-        <%= f.submit class: 'chat-room-form__action-btn'%>
+        <br>
+        <%= f.submit "飛行機(行き)を予約する", class: 'chat-room-form__action-btn'%>
      
   <% end %>
 

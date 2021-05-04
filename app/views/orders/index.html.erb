@@ -6,65 +6,86 @@
     </h1>
     <%= link_to "戻る", country_path(@country.id) %>
     <%# 購入内容の表示 %>
+    <div class="bold">選択した国　<%= @country.name%></div>
+    <% unless @country.tour%>
     <% if @country.plane %>
-    <div> 選択した飛行機情報 </div>
-    <div>飛行機名<%=@plane.name%></div>
-    <div>料金<%=@plane.price%>円</div>
-    <div>人数<%=@plane.howmany%>人</div>
-    <div>行きの日程<%=@plane.go_date%></div>
-    <div>帰りの日程<%=@plane.back_date%></div>
-    <div>行きの出発時間<%=@plane.go_time%></div>
-    <div>帰りの出発時間<%=@plane.back_time%></div>
-    <div>合計金額<%=@plane.price * @plane.howmany%>円</div>
-    <div>
-    <% end %>
+<table>
+<tr><th colspan="2", class="bold">選択した飛行機(往復) </th></tr>
+<tr><th>飛行機名</th> <td><%=@plane.name%></td></tr>
+<tr><th>料金</th><td><%=@plane.price%>円</td><tr>
+<tr><th>人数</th><td><%=@plane.howmany%>人</td></tr>
+<tr><th>行きの日程</th><td><%=@plane.go_date%></td></tr>
+<tr><th>帰りの日程</th><td><%=@plane.back_date%></td></tr>
+<tr><th>行きの出発時間</th><td><%=@plane.go_time%></td></tr>
+<tr><th>帰りの出発時間</th><td><%=@plane.back_time%></td></tr>
+<tr><th>合計金額</th><td><%=@plane.price * @plane.howmany%>円</td></tr>
 
-    <% if @country.plane_go %>
-    <div> 選択した飛行機情報 </div>
-    <div>飛行機名<%=@plane_go.name%></div>
-    <div>料金<%=@plane_go.price%>円</div>
-    <div>人数<%=@plane_go.howmany%>人</div>
-    <div>行きの日程<%=@plane_go.go_date%></div>
-    <div>行きの出発時間<%=@plane_go.go_time%></div>
-    <div>合計金額<%=@plane_go.price * @plane_go.howmany%>円</div>
-    <div>
-    <% end %>
+</table>
+<% end %>
+<br>
+  <% unless @country.plane %>
+  <% if @country.plane_go %>
+<table>
+<tr> <th colspan="2", class="bold">選択した飛行機情報(行き) </th> </tr>
+<tr> <th>飛行機名</th><td><%=@plane_go.name%></td> </tr>
+<tr> <th>料金</th><td><%=@plane_go.price%>円</td> </tr>
+<tr> <th>人数</th><td><%=@plane_go.howmany%>人</td></tr>
+<tr> <th>行きの日程</th><td><%=@plane_go.go_date%></td> </tr>
+<tr> <th>行きの出発時間</th><td><%=@plane_go.go_time%></td> </tr>
+<tr> <th>合計金額</th><td><%=@plane_go.price * @plane_go.howmany%>円</td> <tr>
+<tr>
+
+</table>
+<% end %>
+<br>
 
     <% if @country.plane_back %>
-    <div> 選択した飛行機情報 </div>
-    <div>飛行機名<%=@plane_back.name%></div>
-    <div>料金<%=@plane_back.price%>円</div>
-    <div>人数<%=@plane_back.howmany%>人</div>
-    <div>帰りの日程<%=@plane_back.back_date%></div>
-    <div>帰りの出発時間<%=@plane_back.back_time%></div>
-    <div>合計金額<%=@plane_back.price * @plane_back.howmany%>円</div>
-    <div>
-    <% end %>
+<table>
+<tr> <th colspan="2", class="bold"> 選択した飛行機情報(帰り) </th> </tr>
+<tr> <th>飛行機名</th> <td><%=@plane_back.name%></td> </tr>
+<tr> <th>料金</th><td><%=@plane_back.price%>円</td></tr>
+<tr><th>人数</th><td><%=@plane_back.howmany%>人</td></tr>
+<tr><th>帰りの日程</th><td><%=@plane_back.back_date%></td> </tr>
+<tr><th>帰りの出発時間</th><td><%=@plane_back.back_time%></td> </tr>
+<tr><th>合計金額</th><td><%=@plane_back.price * @plane_back.howmany%>円</td></tr>
+
+</table>
+<% end %>
+<% end %>
+
+
+<br>
 
     <% if @country.hotel %>
-    <div> 選択したホテル情報 </div>
-    <div>ホテル名<%=@hotel.name%></div>
-    <div>料金<%=@hotel.price%>円</div>
-    <div>人数<%=@hotel.howmany%>人</div>
-    <div>宿泊日数<%=@hotel.day%>日</div>
-    <div>チェックイン日<%=@hotel.go_date%></div>
-    <div>チェックアウト日<%=@hotel.back_date%></div>
-    <div>合計金額<%=@hotel.price * @hotel.day * @hotel.howmany %>円</div>
-    <div>
-    <% end %>
+<table>
+<tr><th colspan="2", class="bold"> 選択したホテル情報 </th> </tr>
+<tr><th>ホテル名</th><td><%=@hotel.name%></td></tr>
+<tr><th>料金</th><td><%=@hotel.price%>円</td></tr>
+<tr><th>人数</th><td><%=@hotel.howmany%>人</td></tr>
+<tr><th>宿泊日数</th><td><%=@hotel.day%>日</td> </tr>
+<tr><th>チェックイン日</th><td><%=@hotel.go_date%></td> </tr>
+<tr><th>チェックアウト日</th><td><%=@hotel.back_date%></td></tr>
+<tr><th>合計金額</th><td><%=@hotel.price * @hotel.day * @hotel.howmany %>円</td></tr>
+
+</table>
+<% end %>
+<% end %>
+<br>
 
     <% if @country.tour %>
-    <div> 選択したツアー情報 </div>
-    <div>ツアー名<%=@tour.name%></div>
-    <div>料金<%=@tour.price%>円</div>
-    <div>期間<%=@tour.span%>日</div>
-    <div>人数<%=@tour.howmany%>人</div>
-    <div>出発日<%=@tour.go_date%></div>
-    <div>合計金額<%=@tour.price * @tour.howmany %>円</div>
-    <div>
-    <% end %>
+<table>
+<tr><th colspan="2", class="bold"> 選択したツアー情報 </th> </tr>
+<tr> <th>ツアー名</th><td><%=@tour.name%></td></tr>
+<tr> <th>料金</th><td><%=@tour.price%>円</td></tr>
+<tr> <th>期間</th><td><%=@tour.span%>日</td></tr>
+<tr> <th>人数</th><td><%=@tour.howmany%>人</td></tr>
+<tr> <th>出発日</th><td><%=@tour.go_date%></td></tr>
+<tr><th>合計金額</th><td><%=@tour.price * @tour.howmany %>円</td></tr>
 
-    <div>お支払い金額
+</table>
+<% end %>
+<br>
+    <div class="total_price">お支払い金額
     <%# 合計金額　単体の場合は書かなくても良いかも　かぶる %>
    <% if @country.tour%>
     <%= @tour.price * @tour.howmany%>
@@ -148,19 +169,19 @@
     <%= f.text_field :passport_number %>
 
     <div class="weight-bold-text">
-          姓
+          姓(＊英語大文字でご記入ください)
           <span class="indispensable">必須</span>
     </div>
     <%= f.text_field :first_name %>
 
     <div class="weight-bold-text">
-          名
+          名(＊英語大文字でご記入ください)
           <span class="indispensable">必須</span>
     </div>
     <%= f.text_field :last_name %>
 
     <div class="weight-bold-text">
-          国籍
+          国籍(＊英語大文字でご記入ください)
           <span class="indispensable">必須</span>
     </div>
     <%= f.text_field :nationality %>
@@ -199,7 +220,7 @@
 
     <div class='form-text-wrap'>
     <div class="weight-bold-text">
-          本籍
+          本籍(＊英語大文字でご記入ください)
           <span class="indispensable">必須</span>
     </div>
     <%= f.text_field :registered_place %>
@@ -216,10 +237,10 @@
                     use_month_numbers: true,
                     prompt:'--',
                     start_year: 2011,
-                  
                     end_year: (Time.now.year - 1),
                     date_separator: '%s'),
-                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>"%>
+                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" 
+                  %>
     </div>
 
     <div class='form-text-wrap'>

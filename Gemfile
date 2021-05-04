@@ -61,3 +61,7 @@ gem 'pry-rails'
 
 gem 'active_hash'
 gem 'payjp'
+
+gem 'premailer-rails'
+
+gem 'jc-validates_timeliness'

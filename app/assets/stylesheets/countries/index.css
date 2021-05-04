@@ -1,0 +1,27 @@
+.over{
+  margin-left:20px;
+  /* text-align: center; */
+}
+.south-eastern{
+  font-size:25px;
+}
+.shindan{
+  margin-top: 150px;
+}
+
+.country{
+  font-size: 20px;
+  border: solid 1px;
+  background-color: #ffDBC9;
+  /* color: white; */
+}
+.test{
+  width: 120px;
+  border: solid 10px cornsilk;
+
+}
+
+li{
+  font-size:17px;
+  padding: 15px;
+}

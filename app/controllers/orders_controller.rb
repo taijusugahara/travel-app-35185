@@ -20,6 +20,8 @@ class OrdersController < ApplicationController
     @hotel = Hotel.find_by(country_id: @country.id)
     @tour = Tour.find_by(country_id: @country.id)
 
+   
+
     # メール用
     country = Country.find(params[:country_id])
     plane = Plane.find_by(country_id: country.id)
