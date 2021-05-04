@@ -3,6 +3,11 @@ class PlaneBacksController < ApplicationController
   before_action :move_to_root
   def index
     @country = Country.find(params[:country_id])
+    @thai = ThaiPlaneBack.all
+    @cambo = CamboPlaneBack.all
+    @vet = VetPlaneBack.all
+    @malaysia = MalaysiaPlaneBack.all
+    @singapore = SingaporePlaneBack.all
   end
 
   def new

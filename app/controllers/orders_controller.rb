@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :move_to_root
+  before_action :move_to_country
   def index
     @country = Country.find(params[:country_id])
     @plane = Plane.find_by(country_id: @country.id)
@@ -287,6 +288,24 @@ class OrdersController < ApplicationController
 
   def move_to_root
     @country = Country.find(params[:country_id])
-    redirect_to root_path if current_user.id != @country.user.id 
+    redirect_to root_path if current_user.id != @country.user.id  
+    
+
+  end
+
+  def move_to_country
+    @country = Country.find(params[:country_id])
+    unless @country.plane
+        unless @country.plane_go
+            unless @country.plane_back
+                unless @country.hotel 
+                   unless @country.tour
+                    redirect_to country_path(@country.id)
+                   end
+                end
+            end 
+        end
+    end
+    
   end
 end

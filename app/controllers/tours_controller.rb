@@ -3,6 +3,11 @@ class ToursController < ApplicationController
   before_action :move_to_root
   def index
     @country = Country.find(params[:country_id])
+    @thai = ThaiTour.all
+    @cambo = CamboTour.all
+    @vet = VetTour.all
+    @malaysia = MalaysiaTour.all
+    @singapore = SingaporeTour.all
   end
 
   def new

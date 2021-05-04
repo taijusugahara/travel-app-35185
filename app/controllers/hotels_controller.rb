@@ -3,6 +3,11 @@ class HotelsController < ApplicationController
   before_action :move_to_root
   def index
     @country = Country.find(params[:country_id])
+    @thai = ThaiHotel.all
+    @cambo = CamboHotel.all
+    @vet = VetHotel.all
+    @malaysia = MalaysiaHotel.all
+    @singapore = SingaporeHotel.all
   end
 
   def new

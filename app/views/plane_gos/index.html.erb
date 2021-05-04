@@ -1,17 +1,64 @@
-<%= @country.name %>へようこそ！
+<div><%= @country.name %>へようこそ！</div>
+<br>
+
+<div>飛行機を選ぼう</div>
+<br>
+<% if @country.name == 'タイ'%>
+      
+        <table>
+        <% @thai.each do |thai| %>
+          
+            <tr><td class="td1"><%= thai.name %></td>
+            <td class="td1"><%= thai.price %>円</td></tr> 
+        
+        <% end %>
+        </table>
+<% elsif @country.name == 'カンボジア' %>
+
+        <table>
+        <% @cambo.each do |cambo| %>
+          
+              <tr><td class="td1"><%= cambo.name %></td>
+              <td class="td1"><%= cambo.price %>円</td></tr> 
+          
+        <% end %>
+        </table>
+ <% elsif @country.name == 'ベトナム' %>
+
+        <table>
+        <% @vet.each do |vet| %>
+          
+             <tr><td class="td1"><%= vet.name %></td>
+            <td class="td1"><%= vet.price %>円</td></tr>
+          
+        <% end %>
+        </table>
+
+  <% elsif @country.name == 'マレーシア' %>
+        <table>
+        <% @malaysia.each do |malaysia| %>
+            
+              <tr><td class="td1"><%= malaysia.name %></td>
+            <td class="td1"><%= malaysia.price %>円</td></tr>
+            
+        <% end %>
+        </table>
+
+  <% elsif @country.name == 'シンガポール' %>
+        <table>
+        <% @singapore.each do |singapore| %>
+          
+             <tr><td class="td1"><%= singapore.name %></td>
+            <td class="td1"><%= singapore.price %>円</td></tr>
+          
+        <% end %>
+        </table>
+        
+  <% end %>
 
 
-
-
-<div>飛行機を選ぼう
-<ul>
-
-<li> 飛行機A</li>
-<li> 飛行機B</li>
-<li> 飛行機C </li>
-</ul>
+<br>
 <div>
 <%= link_to "飛行機(行き)を予約する", new_country_plane_go_path(@country.id) %> 
 </div>
 
-</div>

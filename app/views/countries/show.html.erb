@@ -116,21 +116,21 @@
 <% unless @country.tour%>
 <% unless @country.plane %>
 <div>
-<%= link_to "飛行機(往復)を予約する", new_country_plane_path(@country.id) %> 
+<%= link_to "飛行機(往復)を選ぶ", country_planes_path(@country.id) %> 
 </div>
 <% end %>
 <br>
 <% unless @country.plane%>
 <% unless @country.plane_go%>
 <div>
-<%= link_to "飛行機(行き)を予約する", new_country_plane_go_path(@country.id) %> 
+<%= link_to "飛行機(行き)を選ぶ", country_plane_gos_path(@country.id) %> 
 </div>
 <% end %>
 
 <br>
 <% unless @country.plane_back  %>
 <div>
-<%= link_to "飛行機(帰り)を予約する", new_country_plane_back_path(@country.id) %> 
+<%= link_to "飛行機(帰り)を選ぶ", country_plane_backs_path(@country.id) %> 
 </div>
 <% end %>
 <% end %>
@@ -138,7 +138,7 @@
 
 <% unless @country.hotel %>
 <div>
-<%= link_to "ホテルを予約する",  new_country_hotel_path(@country.id) %> 
+<%= link_to "ホテルを選ぶ",  country_hotels_path(@country.id) %> 
 </div>
 <% end %>
 <%end%>
@@ -146,7 +146,7 @@
 
 <% unless @country.tour %>
 <div>
-<%= link_to "ツアーを予約する", new_country_tour_path(@country.id) %> 
+<%= link_to "ツアーを選ぶ", country_tours_path(@country.id) %> 
 </div>
 <% end %>
 

@@ -3,6 +3,11 @@ class PlaneGosController < ApplicationController
   before_action :move_to_root
   def index
     @country = Country.find(params[:country_id])
+    @thai = ThaiPlaneGo.all
+    @cambo = CamboPlaneGo.all
+    @vet = VetPlaneGo.all
+    @malaysia = MalaysiaPlaneGo.all
+    @singapore = SingaporePlaneGo.all
   end
 
   def new
