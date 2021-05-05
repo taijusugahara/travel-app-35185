@@ -61,4 +61,14 @@
 <div>
 <%= link_to "ホテルを予約する", new_country_hotel_path(@country.id) %> 
 </div>
-
+<% if @country.name =="タイ"%>
+  <a href="/google_maps/thai"> google-map(タイ)</a>
+<% elsif @country.name =="カンボジア"%>
+  <a href="/google_maps/cambo"> google-map(カンボジア)</a>
+  <% elsif @country.name =="ベトナム"%>
+  <a href="/google_maps/vet"> google-map(ベトナム)</a>
+  <% elsif @country.name =="マレーシア"%>
+  <a href="/google_maps/malaysia"> google-map(マレーシア)</a>
+  <% elsif @country.name =="シンガポール"%>
+  <a href="/google_maps/singapore"> google-map(シンガポール)</a>
+<%end%>

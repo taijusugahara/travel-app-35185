@@ -1,0 +1,66 @@
+<h2>gmap</h2>
+<div id='map'></div>
+
+<style>
+#map {
+  height: 600px;
+  width: 600px;
+}
+</style>
+
+<script>
+let map
+var InfoWindow
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 13.384837, lng:103.860907},
+   
+    zoom: 12,
+  });
+
+  marker_a = new google.maps.Marker({
+    position:  {lat: 13.384837, lng:103.860907},
+    map: map,
+  });
+
+  marker_b = new google.maps.Marker({
+    position:  {lat: 13.382766, lng:103.879177},
+    map: map
+  });
+  
+
+  marker_c = new google.maps.Marker({
+    position:  {lat: 13.376083, lng:103.879337},
+    map: map
+  });
+  
+
+  infoWindow_a = new google.maps.InfoWindow({ // 吹き出しの追加
+        content: '<div class="sample">ホテルたちつてと</div>' // 吹き出しに表示する内容
+  });
+  infoWindow_b = new google.maps.InfoWindow({ // 吹き出しの追加
+        content: '<div class="sample">ホテルなにぬねの</div>' // 吹き出しに表示する内容
+  });
+  infoWindow_c = new google.maps.InfoWindow({ // 吹き出しの追加
+        content: '<div class="sample">ホテルはひふへほ</div>' // 吹き出しに表示する内容
+  });
+   marker_a.addListener('click', function() { // マーカーをクリックしたとき
+     infoWindow_a.open(map, marker_a); // 吹き出しの表示
+    });
+
+    marker_b.addListener('click', function() { // マーカーをクリックしたとき
+     infoWindow_b.open(map, marker_b); // 吹き出しの表示
+    });
+
+    marker_c.addListener('click', function() { // マーカーをクリックしたとき
+     infoWindow_c.open(map, marker_c); // 吹き出しの表示
+    });
+
+     
+ 
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY'] %>&callback=initMap" async defer></script>
