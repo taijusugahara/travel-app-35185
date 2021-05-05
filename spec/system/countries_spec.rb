@@ -23,7 +23,7 @@ RSpec.describe "国関連", type: :system do
       }.to change { Country.count }.by(1)
       # expect(current_path).to eq (country_planes_path(@country_id))
       # ページを移動すると国を選び直す、トップページに戻るリンクがある。
-      expect(page).to have_content('国を選びなおす')
+   
       expect(page).to have_content('トップページに戻る')
     end
     

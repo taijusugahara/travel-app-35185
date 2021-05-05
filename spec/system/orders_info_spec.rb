@@ -21,7 +21,7 @@ RSpec.describe "飛行機とホテル購入", type: :system do
       # 飛行機一覧ページにいく
       visit country_planes_path(@country)
       # 飛行機を予約するリンクがある
-      expect(page).to have_content('飛行機を予約する')
+      expect(page).to have_content('飛行機(往復)を予約する')
       # 飛行機選択ページを訪れる
       visit new_country_plane_path(@country)
       # 情報を入力する
@@ -56,7 +56,7 @@ RSpec.describe "飛行機とホテル購入", type: :system do
       # 購入ページを訪れる
       visit country_orders_path(@country)
       # 選択した飛行機の情報とホテルの情報がある
-      expect(page).to have_content("選択した飛行機情報")
+      expect(page).to have_content("選択した飛行機情報(往復)")
       expect(page).to have_content("選択したホテル情報")
       # 情報を入力する
       order_info_support
@@ -94,7 +94,7 @@ RSpec.describe "飛行機(往復)のみ購入", type: :system do
       # 購入ページを訪れる
       visit country_orders_path(@plane.country)
       # 選択した飛行機の情報とホテルの情報がある
-      expect(page).to have_content("選択した飛行機情報")
+      expect(page).to have_content("選択した飛行機情報(往復)")
       # 情報を入力する
       order_info_support
       # 送信するとOrderモデルInfoモデルの数が１上がる
@@ -577,18 +577,9 @@ RSpec.describe "購入できない場合", type: :system do
       expect(page).to have_content "購入ページにいく"
       # 購入ページを訪れる
       visit country_orders_path(@country1)
-      # 選択した飛行機の情報とホテルの情報がある
-      expect(page).to have_no_content("選択した飛行機情報")
-      expect(page).to have_no_content("選択したホテル情報")
-      # 情報を入力する
-      order_info_support
-      # 送信するとOrderモデルInfoモデルの数が１上がる
-      expect{
-      find('input[name="commit"]').click
-      sleep 2
-      }.to change { Order.count & Info.count }.by(0)
-      # 国詳細ページへと戻される
+      # 購入ページには行けず国詳細ページのまま
       expect(current_path).to eq (country_path(@country1))
+    
 
     end
     it 'ログインしているユーザーは他者の購入ページにいくことはできない' do

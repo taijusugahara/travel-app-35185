@@ -12,11 +12,11 @@ RSpec.describe "Planes", type: :system do
       # 国詳細ページを訪れる
       visit country_path(@country1)
       # 飛行機を選ぶリンクがある
-      expect(page).to have_content('飛行機を選ぶ')
+      expect(page).to have_content('飛行機(往復)を選ぶ')
       # 飛行機一覧ページにいく
       visit country_planes_path(@country1)
       # 飛行機を予約するリンクがある
-      expect(page).to have_content('飛行機を予約する')
+      expect(page).to have_content('飛行機(往復)を予約する')
       # 飛行機選択ページを訪れる
       visit new_country_plane_path(@country1)
       # 情報を入力する
@@ -38,7 +38,7 @@ RSpec.describe "Planes", type: :system do
         # 国詳細ページへと移動する
         expect(current_path).to eq (country_path(@country1.id))
         # 飛行機を変更するリンクがある
-        expect(page).to have_content('飛行機を変更する')
+        expect(page).to have_content('飛行機(往復)を変更する')
       end
 
       it '国を選択しているユーザーは他者の飛行機を選択できない'do
@@ -73,7 +73,7 @@ RSpec.describe "Planes", type: :system do
       # 国詳細ページを訪れる
       visit country_path(@plane1.country)
       # 飛行機を選ぶリンクがある
-      expect(page).to have_content('飛行機を変更する')
+      expect(page).to have_content('飛行機(往復)を変更する')
       # 飛行機変更ページを訪れる
       visit edit_country_plane_path(@plane1.country,@plane1)
       # 情報を入力する
@@ -93,7 +93,7 @@ RSpec.describe "Planes", type: :system do
       # 国詳細ページへ移動する
       expect(current_path).to eq country_path(@plane1.country)
       # 飛行機を変更するリンクがある
-      expect(page).to have_content('飛行機を変更する')
+      expect(page).to have_content('飛行機(往復)を変更する')
 
       end
      
@@ -130,15 +130,15 @@ RSpec.describe "Planes", type: :system do
        # 国詳細ページを訪れる
        visit country_path(@plane1.country)
        # 飛行機取り消しリンクがある
-       expect(page).to have_content('飛行機を取り消す')
+       expect(page).to have_content('飛行機(往復)を取り消す')
        # 飛行機取り消しリンクをクリックすると飛行機モデルのカウント数が１減る
        expect{
-        find_link('飛行機を取り消す', href: country_plane_path(@plane1.country,@plane1)).click
+        find_link('飛行機(往復)を取り消す', href: country_plane_path(@plane1.country,@plane1)).click
       }.to change { Plane.count }.by(-1)
       # ページは国詳細ページのままで、飛行機を取り消しリンクは消えて飛行機を選ぶリンクが表示される
       expect(current_path).to eq (country_path(@plane1.country))
-      expect(page).to have_content('飛行機を選ぶ')
-      expect(page).to have_no_content('飛行機を取り消す')
+      expect(page).to have_content('飛行機(往復)を選ぶ')
+      expect(page).to have_no_content('飛行機(往復)を取り消す')
       end
 
       it '飛行機を選択したユーザーは他者の飛行機を取り消すことはできない'do
