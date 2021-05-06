@@ -93,65 +93,7 @@ RSpec.describe OrderInfo, type: :model do
         expect(@order_info.errors.full_messages).to include("Last name is invalid")
       end
 
-      it 'nationalityが空の場合は購入できない' do
-        @order_info.nationality = ''
-        @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Nationality can't be blank")
-      end
-
-      it 'nationalityが全角の場合は購入できない' do
-        @order_info.nationality = '日本'
-        @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Nationality is invalid")
-      end
-
-      it 'nationalityが半角英語小文字の場合は購入できない' do
-        @order_info.nationality = 'japan'
-        @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Nationality is invalid")
-      end
-
-      it 'registered_placeが空の場合は購入できない' do
-        @order_info.registered_place = ''
-        @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Registered place can't be blank")
-      end
-
-      it 'registered_placeが全角の場合は購入できない' do
-        @order_info.registered_place = '大阪'
-        @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Registered place is invalid")
-      end
-
-      it 'registered_placeが半角英語小文字の場合は購入できない' do
-        @order_info.registered_place = 'osaka'
-        @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Registered place is invalid")
-      end
-
-      it 'genderが空の場合は購入できない' do
-        @order_info.gender = ''
-        @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Gender can't be blank")
-      end
-
-      it 'birthdayが空の場合は購入できない' do
-        @order_info.birthday = ''
-        @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Birthday can't be blank")
-      end
-
-      it 'issue_dateが空の場合は購入できない' do
-        @order_info.issue_date = ''
-        @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Issue date can't be blank")
-      end
-
-      it 'expiry_dateが空の場合は購入できない' do
-        @order_info.expiry_date = ''
-        @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Expiry date can't be blank")
-      end
+     
 
       it 'userが空の場合は購入できない' do
         @order_info.user_id = nil
