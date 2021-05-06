@@ -154,43 +154,43 @@ class OrdersController < ApplicationController
 
   private
   def order_params_a
-    params.require(:order_info).permit(:passport_number, :first_name, :last_name, :nationality, :birthday, :gender, :registered_place, :issue_date, :expiry_date).merge(user_id: current_user.id, country_id: @country.id, plane_id: @plane.id,token: params[:token])
+    params.require(:order_info).permit(:passport_number, :first_name, :last_name).merge(user_id: current_user.id, country_id: @country.id, plane_id: @plane.id,token: params[:token])
   end
 
   def order_params_b
-    params.require(:order_info).permit(:passport_number, :first_name, :last_name, :nationality, :birthday, :gender, :registered_place, :issue_date, :expiry_date).merge(user_id: current_user.id, country_id: @country.id, hotel_id: @hotel.id,token: params[:token])
+    params.require(:order_info).permit(:passport_number, :first_name, :last_name).merge(user_id: current_user.id, country_id: @country.id, hotel_id: @hotel.id,token: params[:token])
   end
 
   def order_params_c
-    params.require(:order_info).permit(:passport_number, :first_name, :last_name, :nationality, :birthday, :gender, :registered_place, :issue_date, :expiry_date).merge(user_id: current_user.id, country_id: @country.id, plane_id: @plane.id, hotel_id: @hotel.id,token: params[:token])
+    params.require(:order_info).permit(:passport_number, :first_name, :last_name).merge(user_id: current_user.id, country_id: @country.id, plane_id: @plane.id, hotel_id: @hotel.id,token: params[:token])
   end
 
   def order_params_d
-    params.require(:order_info).permit(:passport_number, :first_name, :last_name, :nationality, :birthday, :gender, :registered_place, :issue_date, :expiry_date).merge(user_id: current_user.id, country_id: @country.id, plane_go_id: @plane_go.id,token: params[:token])
+    params.require(:order_info).permit(:passport_number, :first_name, :last_name).merge(user_id: current_user.id, country_id: @country.id, plane_go_id: @plane_go.id,token: params[:token])
   end
 
   def order_params_e
-    params.require(:order_info).permit(:passport_number, :first_name, :last_name, :nationality, :birthday, :gender, :registered_place, :issue_date, :expiry_date).merge(user_id: current_user.id, country_id: @country.id, plane_go_id: @plane_go.id, hotel_id: @hotel.id,token: params[:token])
+    params.require(:order_info).permit(:passport_number, :first_name, :last_name).merge(user_id: current_user.id, country_id: @country.id, plane_go_id: @plane_go.id, hotel_id: @hotel.id,token: params[:token])
   end
 
   def order_params_f
-    params.require(:order_info).permit(:passport_number, :first_name, :last_name, :nationality, :birthday, :gender, :registered_place, :issue_date, :expiry_date).merge(user_id: current_user.id, country_id: @country.id, plane_back_id: @plane_back.id,token: params[:token])
+    params.require(:order_info).permit(:passport_number, :first_name, :last_name).merge(user_id: current_user.id, country_id: @country.id, plane_back_id: @plane_back.id,token: params[:token])
   end
 
   def order_params_g
-    params.require(:order_info).permit(:passport_number, :first_name, :last_name, :nationality, :birthday, :gender, :registered_place, :issue_date, :expiry_date).merge(user_id: current_user.id, country_id: @country.id, plane_back_id: @plane_back.id, hotel_id: @hotel.id,token: params[:token])
+    params.require(:order_info).permit(:passport_number, :first_name, :last_name).merge(user_id: current_user.id, country_id: @country.id, plane_back_id: @plane_back.id, hotel_id: @hotel.id,token: params[:token])
   end
 
   def order_params_h
-    params.require(:order_info).permit(:passport_number, :first_name, :last_name, :nationality, :birthday, :gender, :registered_place, :issue_date, :expiry_date).merge(user_id: current_user.id, country_id: @country.id, plane_go_id: @plane_go.id, plane_back_id: @plane_back.id,token: params[:token])
+    params.require(:order_info).permit(:passport_number, :first_name, :last_name).merge(user_id: current_user.id, country_id: @country.id, plane_go_id: @plane_go.id, plane_back_id: @plane_back.id,token: params[:token])
   end
 
   def order_params_i
-    params.require(:order_info).permit(:passport_number, :first_name, :last_name, :nationality, :birthday, :gender, :registered_place, :issue_date, :expiry_date).merge(user_id: current_user.id, country_id: @country.id, plane_go_id: @plane_go.id, plane_back_id: @plane_back.id,hotel_id: @hotel.id, token: params[:token])
+    params.require(:order_info).permit(:passport_number, :first_name, :last_name).merge(user_id: current_user.id, country_id: @country.id, plane_go_id: @plane_go.id, plane_back_id: @plane_back.id,hotel_id: @hotel.id, token: params[:token])
   end
 
   def order_params_j
-    params.require(:order_info).permit(:passport_number, :first_name, :last_name, :nationality, :birthday, :gender, :registered_place, :issue_date, :expiry_date).merge(user_id: current_user.id, country_id: @country.id, tour_id: @tour.id,token: params[:token])
+    params.require(:order_info).permit(:passport_number, :first_name, :last_name).merge(user_id: current_user.id, country_id: @country.id, tour_id: @tour.id,token: params[:token])
   end
 
 

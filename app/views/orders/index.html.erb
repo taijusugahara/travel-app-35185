@@ -161,7 +161,8 @@
     
     <%# 配送先の入力 %>
     <div class="form-group">
-    パスポート情報
+      <div class="weight-bold-text">パスポート情報</div>
+    <br>
     <div class="weight-bold-text">
           パスポート番号
           <span class="indispensable">必須</span>
@@ -180,88 +181,7 @@
     </div>
     <%= f.text_field :last_name %>
 
-    <div class="weight-bold-text">
-          国籍(＊英語大文字でご記入ください)
-          <span class="indispensable">必須</span>
-    </div>
-    <%= f.text_field :nationality %>
- 
-  
-    <div class='form-text-wrap'>
-      <label class="form-text">生年月日</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <div class='input-birth-wrap'>
-      <%= raw sprintf(
-                  f.date_select(
-                    :birthday,
-                    class:'select-birth',
-                    id:"birth-date",
-                    use_month_numbers: true,
-                    prompt:'--',
-                    start_year: 1930,
-                    end_year: (Time.now.year - 5),
-                    date_separator: '%s'),
-                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
-    </div>
    
-    
-    
-
-    <div class="weight-bold-text">
-          性別
-          <span class="indispensable">必須</span>
-    </div>
-    <select name= "order_info[gender]">
-    <option value= "" ></option>
-    <option value= "男" >男</option>
-    <option value= "女" >女</option>
-    </select>
-
-    <div class='form-text-wrap'>
-    <div class="weight-bold-text">
-          本籍(＊英語大文字でご記入ください)
-          <span class="indispensable">必須</span>
-    </div>
-    <%= f.text_field :registered_place %>
-    <div class='form-text-wrap'>
-    <label class="form-text">発行年月日</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <div class='input-birth-wrap'>
-    <%= raw sprintf(
-                  f.date_select(
-                    :issue_date,
-                    class:'select-birth',
-                    id:"issue-date",
-                    use_month_numbers: true,
-                    prompt:'--',
-                    start_year: 2011,
-                    end_year: (Time.now.year - 1),
-                    date_separator: '%s'),
-                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" 
-                  %>
-    </div>
-
-    <div class='form-text-wrap'>
-    <label class="form-text">有効期限満了日</label>
-      <span class="indispensable">必須</span>
-    </div>
-    <div class='input-birth-wrap'>
-   <%= raw sprintf(
-                  f.date_select(
-                    :expiry_date,
-                    class:'select-birth',
-                    id:"expiry-date",
-                    use_month_numbers: true,
-                    prompt:'--',
-                    start_year: (Time.now.year + 1),
-                    end_year: (Time.now.year + 10),
-                    date_separator: '%s'),
-                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
-    
-    </div>
-
     <%# /配送先の入力 %>
     <div class='buy-btn'>
       <%= f.submit "購入" ,class:"buy-red-btn" %>

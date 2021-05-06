@@ -39,12 +39,6 @@ ActiveRecord::Schema.define(version: 2021_04_26_071247) do
     t.string "passport_number", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.string "nationality", null: false
-    t.date "birthday", null: false
-    t.string "gender", null: false
-    t.string "registered_place", null: false
-    t.date "issue_date", null: false
-    t.date "expiry_date", null: false
     t.bigint "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

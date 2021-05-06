@@ -14,6 +14,7 @@
             <td><%= thai.price %>円</td></tr> 
         
         <% end %>
+        <tr><td colspan="2"><a href="/google_maps/thai"> 地図を確認する</a></td></tr>
         </table>
      
         <%= f.collection_select(:name, ThaiHotel.all, :name, :name, {prompt:"ホテルを選択してください"}, {class:"select-box", id:"item-category"}) %>
@@ -29,6 +30,7 @@
               <td><%= cambo.price %>円</td></tr> 
           
         <% end %>
+        <tr><td colspan="2"><a href="/google_maps/cambo"> 地図を確認する</a></td></tr>
         </table>
        
         <%= f.collection_select(:name, CamboHotel.all, :name, :name, {prompt:"ホテルを選択してください"}, {class:"select-box", id:"item-category"}) %>
@@ -42,6 +44,7 @@
             <td><%= vet.price %>円</td></tr>
           
         <% end %>
+        <tr><td colspan="2"><a href="/google_maps/vet"> 地図を確認する</a></td></tr>
         </table>
         
         <%= f.collection_select(:name, VetHotel.all, :name, :name, {prompt:"ホテルを選択してください"}, {class:"select-box", id:"item-category"}) %>
@@ -55,6 +58,7 @@
             <td><%= malaysia.price %>円</td></tr>
             
         <% end %>
+        <tr><td colspan="2"><a href="/google_maps/malaysia"> 地図を確認する</a></td></tr>
         </table>
         
         <%= f.collection_select(:name, MalaysiaHotel.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
@@ -69,6 +73,7 @@
             <td><%= singapore.price %>円</td></tr>
           
         <% end %>
+        <tr><td colspan="2"><a href="/google_maps/singapore"> 地図を確認する</a></td></tr>
         </table>
         
         <%= f.collection_select(:name, SingaporeHotel.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>

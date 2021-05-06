@@ -12,6 +12,7 @@
             <td class="td1"><%= thai.price %>円</td></tr> 
         
         <% end %>
+            <tr><td colspan="2"><a href="/google_maps/thai"> 地図を確認する</a></td></tr>
         </table>
 <% elsif @country.name == 'カンボジア' %>
 
@@ -22,6 +23,7 @@
               <td class="td1"><%= cambo.price %>円</td></tr> 
           
         <% end %>
+        <tr><td colspan="2"><a href="/google_maps/cambo"> 地図を確認する</a></td></tr>
         </table>
  <% elsif @country.name == 'ベトナム' %>
 
@@ -32,6 +34,7 @@
             <td class="td1"><%= vet.price %>円</td></tr>
           
         <% end %>
+        <tr><td colspan="2"><a href="/google_maps/vet"> 地図を確認する</a></td></tr>
         </table>
 
   <% elsif @country.name == 'マレーシア' %>
@@ -42,6 +45,7 @@
             <td class="td1"><%= malaysia.price %>円</td></tr>
             
         <% end %>
+        <tr><td colspan="2"><a href="/google_maps/malaysia"> 地図を確認する</a></td></tr>
         </table>
 
   <% elsif @country.name == 'シンガポール' %>
@@ -52,6 +56,7 @@
             <td class="td1"><%= singapore.price %>円</td></tr>
           
         <% end %>
+        <tr><td colspan="2"><a href="/google_maps/singapore"> 地図を確認する</a></td></tr>
         </table>
         
   <% end %>
@@ -61,14 +66,4 @@
 <div>
 <%= link_to "ホテルを予約する", new_country_hotel_path(@country.id) %> 
 </div>
-<% if @country.name =="タイ"%>
-  <a href="/google_maps/thai"> google-map(タイ)</a>
-<% elsif @country.name =="カンボジア"%>
-  <a href="/google_maps/cambo"> google-map(カンボジア)</a>
-  <% elsif @country.name =="ベトナム"%>
-  <a href="/google_maps/vet"> google-map(ベトナム)</a>
-  <% elsif @country.name =="マレーシア"%>
-  <a href="/google_maps/malaysia"> google-map(マレーシア)</a>
-  <% elsif @country.name =="シンガポール"%>
-  <a href="/google_maps/singapore"> google-map(シンガポール)</a>
-<%end%>
+
