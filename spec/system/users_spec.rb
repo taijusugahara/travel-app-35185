@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "新規登録", type: :system do
+RSpec.describe '新規登録', type: :system do
   before do
     @user = FactoryBot.build(:user)
   end
-  context 'ユーザー新規登録ができる時とできない時' do 
+  context 'ユーザー新規登録ができる時とできない時' do
     it '正しい情報を入力すればユーザー新規登録ができてトップページに移動する' do
       # トップページにいく
       visit root_path
@@ -25,15 +25,15 @@ RSpec.describe "新規登録", type: :system do
       select '12', from: 'user[birthday(2i)]'
       select '24', from: 'user[birthday(3i)]'
       # 会員登録を押したらユーザーモデルのカウントが1上がる
-      expect{
+      expect do
         find('input[name="commit"]').click
-      }.to change { User.count }.by(1)
+      end.to change { User.count }.by(1)
       # トップページに移行する
-      expect(current_path).to eq (root_path)
+      expect(current_path).to eq(root_path)
       # ログアウトボタンが表示される。新規登録・ログインボタンは表示されない。
-      expect(page).to have_content ('ログアウト')
-      expect(page).to have_no_content ('新規登録')
-      expect(page).to have_no_content ('ログイン')
+      expect(page).to have_content('ログアウト')
+      expect(page).to have_no_content('新規登録')
+      expect(page).to have_no_content('ログイン')
     end
 
     it '登録情報が入力されていなければ新規登録できない' do
@@ -56,22 +56,20 @@ RSpec.describe "新規登録", type: :system do
       select '--', from: 'user[birthday(2i)]'
       select '--', from: 'user[birthday(3i)]'
       # 会員登録ボタンを押した時にユーザーモデルの数は変わらない
-      expect{
+      expect do
         find('input[name="commit"]').click
-      }.to change { User.count }.by(0)
+      end.to change { User.count }.by(0)
       # ページは変わらず新規登録ページである
       expect(current_path).to eq user_registration_path
     end
-
   end
 end
-  RSpec.describe 'ログイン', type: :system do
-    before do
-      @user = FactoryBot.create(:user)
-    end
+RSpec.describe 'ログイン', type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+  end
   context 'ログインができる時とできない時' do
-
-    it 'ログインができる時'do
+    it 'ログインができる時' do
       # トップページにいく
       visit root_path
       # ログインボタンがある
@@ -85,32 +83,28 @@ end
       # ログインボタンを押す
       find('input[name="commit"]').click
       # トップページに移行する
-      expect(current_path).to eq (root_path)
+      expect(current_path).to eq(root_path)
       # ログアウトボタンが表示される。新規登録・ログインボタンは表示されない。
-      expect(page).to have_content ('ログアウト')
-      expect(page).to have_no_content ('新規登録')
-      expect(page).to have_no_content ('ログイン')
-
+      expect(page).to have_content('ログアウト')
+      expect(page).to have_no_content('新規登録')
+      expect(page).to have_no_content('ログイン')
     end
 
-    it 'ログインできない時'do
-     # トップページにいく
-     visit root_path
-     # ログインボタンがある
-     expect(page).to have_content('ログイン')
-     # ログインページにいく
-     visit new_user_session_path
+    it 'ログインできない時' do
+      # トップページにいく
+      visit root_path
+      # ログインボタンがある
+      expect(page).to have_content('ログイン')
+      # ログインページにいく
+      visit new_user_session_path
 
-     # ログイン情報を空で入力する
-     fill_in 'user[email]', with: ''
-     fill_in 'user[password]', with: ''
-     # ログインボタンを押す
-     find('input[name="commit"]').click
-     # 変わらずログインページのまま
-     expect(current_path).to eq (new_user_session_path)
+      # ログイン情報を空で入力する
+      fill_in 'user[email]', with: ''
+      fill_in 'user[password]', with: ''
+      # ログインボタンを押す
+      find('input[name="commit"]').click
+      # 変わらずログインページのまま
+      expect(current_path).to eq(new_user_session_path)
     end
   end
-
-  end
-
-
+end

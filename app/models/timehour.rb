@@ -7,11 +7,9 @@ class Timehour < ActiveHash::Base
     { id: 5, name: '12:00' },
     { id: 6, name: '15:00' },
     { id: 7, name: '18:00' },
-    { id: 8, name: '21:00' },
+    { id: 8, name: '21:00' }
   ]
 
   include ActiveHash::Associations
-   has_many :planes
-
-
+  has_many :planes
 end

@@ -3,14 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-    has_many :countries
-    has_many :planes
-    has_many :plane_gos
-    has_many :plane_backs
-    has_many :hotels
-    has_many :tours
-    has_many :orders
-  
+  has_many :countries
+  has_many :planes
+  has_many :plane_gos
+  has_many :plane_backs
+  has_many :hotels
+  has_many :tours
+  has_many :orders
+
   with_options presence: true do
     validates :nickname
     with_options format: { with: /[^ -~｡-ﾟ]+/ } do
@@ -24,7 +24,4 @@ class User < ApplicationRecord
     validates :birthday
     validates :password, format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/ }
   end
- 
-
-
 end

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :country do
-    name {"タイ"}
+    name { 'タイ' }
     association :user
   end
 end

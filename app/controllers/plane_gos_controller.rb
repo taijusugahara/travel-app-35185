@@ -23,7 +23,7 @@ class PlaneGosController < ApplicationController
   def create
     @country = Country.find(params[:country_id])
     @plane = PlaneGo.new(plane_params)
-    
+
     if @plane.save
       redirect_to country_path(@country.id)
     else
@@ -70,15 +70,15 @@ class PlaneGosController < ApplicationController
     redirect_to country_path(@country.id)
   end
 
-
   private
+
   def plane_params
-    params.require(:plane_go).permit(:name, :price, :howmany, :go_date, :go_time).merge(user_id: current_user.id, country_id: params[:country_id])
+    params.require(:plane_go).permit(:name, :price, :howmany, :go_date, :go_time).merge(user_id: current_user.id,
+                                                                                        country_id: params[:country_id])
   end
 
   def move_to_root
     @country = Country.find(params[:country_id])
-    redirect_to root_path if current_user.id != @country.user.id 
+    redirect_to root_path if current_user.id != @country.user.id
   end
-
 end

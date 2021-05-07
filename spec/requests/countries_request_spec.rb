@@ -1,5 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe "Countries", type: :request do
-
+RSpec.describe 'Countries', type: :request do
 end

@@ -9,7 +9,6 @@ class PlanesController < ApplicationController
     @vet = VetPlane.all
     @malaysia = MalaysiaPlane.all
     @singapore = SingaporePlane.all
-
   end
 
   def new
@@ -25,7 +24,7 @@ class PlanesController < ApplicationController
   def create
     @country = Country.find(params[:country_id])
     @plane = Plane.new(plane_params)
-    
+
     if @plane.save
       redirect_to country_path(@country.id)
     else
@@ -38,7 +37,6 @@ class PlanesController < ApplicationController
       render :new
 
     end
-    
   end
 
   def edit
@@ -62,7 +60,7 @@ class PlanesController < ApplicationController
       @cambo = CamboPlane.all
       @vet = VetPlane.all
       @malaysia = MalaysiaPlane.all
-    @singapore = SingaporePlane.all
+      @singapore = SingaporePlane.all
       render :edit
     end
   end
@@ -73,15 +71,17 @@ class PlanesController < ApplicationController
     @plane.destroy
     redirect_to country_path(@country.id)
   end
-  
 
   private
+
   def plane_params
-    params.require(:plane).permit(:name, :price, :howmany, :go_date, :back_date, :go_time, :back_time).merge(user_id: current_user.id, country_id: params[:country_id])
+    params.require(:plane).permit(:name, :price, :howmany, :go_date, :back_date, :go_time, :back_time).merge(
+      user_id: current_user.id, country_id: params[:country_id]
+    )
   end
 
   def move_to_root
     @country = Country.find(params[:country_id])
-    redirect_to root_path if current_user.id != @country.user.id 
+    redirect_to root_path if current_user.id != @country.user.id
   end
 end

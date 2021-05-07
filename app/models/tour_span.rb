@@ -35,11 +35,9 @@ class TourSpan < ActiveHash::Base
     { id: 33, name: '2021/11/20' },
     { id: 34, name: '2021/12/1' },
     { id: 35, name: '2021/12/10' },
-    { id: 36, name: '2021/12/20' },
+    { id: 36, name: '2021/12/20' }
   ]
 
   include ActiveHash::Associations
-   has_many :tours
-
-
+  has_many :tours
 end

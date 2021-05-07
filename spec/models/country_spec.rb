@@ -21,10 +21,8 @@ RSpec.describe Country, type: :model do
       it 'userが紐付いていなければ登録できない' do
         @country.user = nil
         @country.valid?
-        expect(@country.errors.full_messages).to include("User must exist")
+        expect(@country.errors.full_messages).to include('User must exist')
       end
     end
-
-
   end
 end

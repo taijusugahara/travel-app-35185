@@ -7,10 +7,10 @@ RSpec.describe User, type: :model do
   describe 'ユーザー新規登録' do
     context '新規登録できる時' do
       it '全て記述されていれば登録できる' do
-       expect(@user).to be_valid
+        expect(@user).to be_valid
       end
     end
-    
+
     context '新規登録できない時' do
       it 'nicknameが空だと登録できない' do
         @user.nickname = ''
@@ -145,4 +145,3 @@ RSpec.describe User, type: :model do
     end
   end
 end
-

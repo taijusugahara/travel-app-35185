@@ -11,7 +11,6 @@ class ToursController < ApplicationController
   end
 
   def new
-    
     @country = Country.find(params[:country_id])
     @tour = Tour.new
     @thai = ThaiTour.all
@@ -24,7 +23,7 @@ class ToursController < ApplicationController
   def create
     @country = Country.find(params[:country_id])
     @tour = Tour.new(tour_params)
-    
+
     if @tour.save
       redirect_to country_path(@country.id)
     else
@@ -37,7 +36,6 @@ class ToursController < ApplicationController
       render :new
 
     end
-    
   end
 
   def edit
@@ -73,17 +71,15 @@ class ToursController < ApplicationController
     redirect_to country_path(@country.id)
   end
 
-
   private
 
   def tour_params
-    params.require(:tour).permit(:name, :price, :span, :howmany, :go_date).merge(user_id: current_user.id, country_id: params[:country_id])
+    params.require(:tour).permit(:name, :price, :span, :howmany, :go_date).merge(user_id: current_user.id,
+                                                                                 country_id: params[:country_id])
   end
 
   def move_to_root
     @country = Country.find(params[:country_id])
-    redirect_to root_path if current_user.id != @country.user.id 
+    redirect_to root_path if current_user.id != @country.user.id
   end
-
-
 end
