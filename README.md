@@ -43,7 +43,7 @@ https://travel-app-35185.herokuapp.com/
 <div>購入ページではカード情報とパスポート情報を入力してください。パスポート番号は英語大文字と数字の組み合わせでご記入ください。</div>
 <div>購入が完了しましたらpay.jpへと料金が支払われ、購入内容の確認メールがGmailでユーザー登録時に入力したemailへと送られます。</div>
 
-
+[![Image from Gyazo](https://i.gyazo.com/018aefdd6c0313401b632130ebe9b18b.gif)](https://gyazo.com/018aefdd6c0313401b632130ebe9b18b)
 
 
 
