@@ -61,7 +61,7 @@
         <tr><td colspan="2"><a href="/google_maps/malaysia"> 地図を確認する</a></td></tr>
         </table>
         
-        <%= f.collection_select(:name, MalaysiaHotel.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:name, MalaysiaHotel.all, :name, :name, {prompt:"ホテルを選択してください"}, {class:"select-box", id:"item-category"}) %>
         <%= f.collection_select(:price, MalaysiaHotel.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"hotel-price"}) %>
 
         <% elsif @country.name == 'シンガポール' %>
@@ -76,7 +76,7 @@
         <tr><td colspan="2"><a href="/google_maps/singapore"> 地図を確認する</a></td></tr>
         </table>
         
-        <%= f.collection_select(:name, SingaporeHotel.all, :name, :name, {prompt:"飛行機を選択してください"}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:name, SingaporeHotel.all, :name, :name, {prompt:"ホテルを選択してください"}, {class:"select-box", id:"item-category"}) %>
         <%= f.collection_select(:price, SingaporeHotel.all, :price, :price, {prompt:"料金を選択してください"}, {class:"select-box", id:"hotel-price"}) %>
 
       <% end %>
