@@ -16,17 +16,17 @@ https://travel-app-35185.herokuapp.com/
 # 実装した機能
 
 <div>まずトップページには国を選択するリンクと国診断テストのリンクがあります。</div>
-<div>国診断テストではお好きな画像を選ぶ問題が5問出題され、選択結果によっておすすめの国が表示されます。
-[![Image from Gyazo](https://i.gyazo.com/f340e1d1959a19d32242a3f24d2f87c3.gif)](https://gyazo.com/f340e1d1959a19d32242a3f24d2f87c3)</div>
+<div>国診断テストではお好きな画像を選ぶ問題が5問出題され、選択結果によっておすすめの国が表示されます。</div>
+[![Image from Gyazo](https://i.gyazo.com/f340e1d1959a19d32242a3f24d2f87c3.gif)](https://gyazo.com/f340e1d1959a19d32242a3f24d2f87c3)
 
-<div>国を選択した後はこのアプリケーションのメインページに行きます。このページから飛行機(往復)、飛行機(行き)、飛行機(帰り)、ホテル、ツアーそれぞれ予約するページに行くリンクがあります。また購入ページに行くリンクもあります。国を変更したくなった方や取り消したくなった方はトップページに戻るリンクをクリックすると選択した国の情報が削除されます。
-[![Image from Gyazo](https://i.gyazo.com/4be84cf55bb9a3e1c650eb3e6bb947a4.gif)](https://gyazo.com/4be84cf55bb9a3e1c650eb3e6bb947a4)</div>
+<div>国を選択した後はこのアプリケーションのメインページに行きます。このページから飛行機(往復)、飛行機(行き)、飛行機(帰り)、ホテル、ツアーそれぞれ予約するページに行くリンクがあります。また購入ページに行くリンクもあります。国を変更したくなった方や取り消したくなった方はトップページに戻るリンクをクリックすると選択した国の情報が削除されます。</div>
+[![Image from Gyazo](https://i.gyazo.com/4be84cf55bb9a3e1c650eb3e6bb947a4.gif)](https://gyazo.com/4be84cf55bb9a3e1c650eb3e6bb947a4)
 
 <div><strong>飛行機(往復)</strong></div>
 <div>メインページから飛行機(往復)を選ぶをクリックすると飛行機(往復)の情報が表示され、予約ページへのリンクがあります。
-予約ページ内で行きたい飛行機の情報を入力すれば、先程のメインページに戻り、入力した情報が表示されお支払い金額に加算されます。
-[![Image from Gyazo](https://i.gyazo.com/8841d5c22ea906f3a41da6211842eae0.gif)](https://gyazo.com/8841d5c22ea906f3a41da6211842eae0)</div>
-<div>その時先程まであった飛行機(往復)を選ぶリンクはなく、代わりに変更・取り消しのリンクが存在し変更または取り消すことが可能であります。[![Image from Gyazo](https://i.gyazo.com/f2623cb94aecf1c13930385042ab0ee1.gif)](https://gyazo.com/f2623cb94aecf1c13930385042ab0ee1)</div>
+予約ページ内で行きたい飛行機の情報を入力すれば、先程のメインページに戻り、入力した情報が表示されお支払い金額に加算されます。</div>
+[![Image from Gyazo](https://i.gyazo.com/8841d5c22ea906f3a41da6211842eae0.gif)](https://gyazo.com/8841d5c22ea906f3a41da6211842eae0)
+<div>その時先程まであった飛行機(往復)を選ぶリンクはなく、代わりに変更・取り消しのリンクが存在し変更または取り消すことが可能であります。</div>[![Image from Gyazo](https://i.gyazo.com/f2623cb94aecf1c13930385042ab0ee1.gif)](https://gyazo.com/f2623cb94aecf1c13930385042ab0ee1)
 
 
 
